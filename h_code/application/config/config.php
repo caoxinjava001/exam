@@ -267,7 +267,7 @@ $config['sess_time_to_update']	= 300;
 |
 */
 $config['cookie_prefix']	= "";
-$config['cookie_domain']	= ".xinnuos.com";
+$config['cookie_domain']	= "182.92.72.93";
 $config['cookie_path']		= "/";
 $config['cookie_expiration']	= 0;//过期时间 默认会话关闭浏览器就清除cookie
 $config['cookie_secure']	= FALSE;

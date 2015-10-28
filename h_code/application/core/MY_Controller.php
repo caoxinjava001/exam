@@ -43,6 +43,7 @@ class MY_Controller extends CI_Controller{
 	private $check_menu_no_add = array();
 	
 	public $check_login_link=array();	//不需要登录的连接 数组格式 类下的所有都不需要时 等于*即可
+	public $is_show_menu=array();	//不需要登录的连接 数组格式 类下的所有都不需要时 等于*即可
 
 
 	/**
@@ -161,13 +162,7 @@ class MY_Controller extends CI_Controller{
 			//$this->org_name = $this->org_info['user_name'];//登录用户隶属分中心的昵称
 			$this->backend_header_data['nickname'] = $this->nickname;//登录者昵称 模版可以直接$nickname调用
 			$this->backend_left_data['login_role_id'] = $this->login_role_id;
-            //权限菜单 开始
-                $this->getMemMenuList();//获取当前用户菜单
-                $this->checkMenu();
-                $this->backend_header_data['menu_info'] = $this->mem_menu_list;
-                //echo '<pre>';
-                //print_r($this->mem_menu_list);exit;
-            //权限菜单 结束 
+			$this->checkMenu();
 		}
 	}
 	
@@ -302,33 +297,7 @@ class MY_Controller extends CI_Controller{
 	 * @author : sunzheng@yduedu.com
 	 */
 	private function checkMenu(){
-		$index_link = '3fa67d2d6';//首页直接跳过权限
-		$link = $this->router->directory.$this->router->class.'/'.$this->router->method;
-		if($this->router->class == 'information_menu'){
-			return true;
-		}
-		if($this->router->directory == '' && $this->router->class == 'index'){
-			return true;
-		}
-		$md5V = md5Menu($link);
-		if(!empty($this->mem_menu_top) && ($md5V == $index_link || isset($this->mem_menu_top[$md5V]))){
-			$this->backend_left_data['left_top_id'] = isset($this->mem_menu_top[$md5V])?$this->mem_menu_top[$md5V]:'';
-		}else{
-            //暂时注释掉 15/06/02
-			//$this->backend_left_data['left_top_id'] = -1;
-			$this->backend_left_data['left_top_id'] = 1;
-			//如果菜单表中没有 证明相关人员没有把此菜单加入菜单表，记录日志 方便相关人员添加
-			if(!isset($this->check_menu_no_add[$md5V]) && $md5V != $index_link){
-				log_message_user('ERROR', 'checkMenu菜单路径没有入库 URL:['.$link.'] ####','menu');
-			}else{
-				//无权限.
-				if($this->input->is_ajax_request()){
- 					//exit($this->getJsonResponse(45120));
-				}else{
-                    //show_message('无权限操作','/');
-				}
-			}
-		}
+		$this->is_show_menu = true;
 	}
 	
 	/**

@@ -12,7 +12,7 @@ class Admin_user_Model extends MY_Model{
 
 	public function __construct() {
 		parent::__construct();
-		$this->_table = "yt_admin_user";	// 表名
+		$this->_table = "h_admin_user";	// 表名
 		$this->initDB();
 	}
 	

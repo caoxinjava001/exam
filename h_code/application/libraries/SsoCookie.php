@@ -78,7 +78,7 @@ class SsoCookie{
 		//加密token 登录一次变一次
 		$token = randomstr(12);
 		$cookieKey = setEncodeByKey($user_info['id'].$user_info['mobile'].$token.$this->CI->config->item('encryption_key'));
-		$cookieValue = setEncodeAuth($user_info['id'].','.$username.','.$user_info['type_id'].','.$token,$cookieKey);
+		$cookieValue = setEncodeAuth($user_info['id'].','.$username.','.$user_info['login_role_id'].','.$token,$cookieKey);
 		log_message_user('INFO','当前登录帐号：'.$username.' 帐号ID:'.$user_info['id'].' cookieKey:'.$cookieKey.' cookieValue:'.$cookieValue,'login');
 		//存cookie
 		$this->setCookieData($this->cookie_sid, $cookieKey);
@@ -94,10 +94,15 @@ class SsoCookie{
 	 * @param string $password
 	 */
 	private function getUserInfoByUserName($username,$password){
+
+		//$password = 'a123456';
+		//$user_info['encrypt'] = 'abcdef';
+		//$ee = encryptMd5($password,$user_info['encrypt']);
+		//var_dump($ee);exit;
 		$error = array();
 		$this->CI->load->model('Admin_user_Model','User_model');
 		//$user_info =$this->CI->User_model->get_one('id,name,mobile,password,encrypt,last_login_date',array('mobile'=>$username,'dele_status'=>NO_DELETE_STATUS,'status'=>2));
-		$user_info =$this->CI->User_model->get_one('id,name,mobile,password,encrypt,last_login_date,status,org_num,yy_pic,login_role_id,identify_pic',array('mobile'=>$username,'dele_status'=>NO_DELETE_STATUS));
+		$user_info =$this->CI->User_model->get_one('*',array('mobile'=>$username,'dele_status'=>NO_DELETE_STATUS));
 		//var_dump($user_info,'123456');exit;
 		if($user_info){//用户存在
 
@@ -106,35 +111,35 @@ class SsoCookie{
 
 				$login_role_id = $user_info['login_role_id'];
 				// 合伙人 start
-				if ($login_role_id == PARTNER_ORG || $login_role_id == PARTNER_PERSONAL) {
-					if (empty($user_info['identify_pic'])  ) {
-						$error['msg']='资料信息不全，请增加信息!!';
-						$error['id']=$user_info['id'];
-						return getAjaxResponse(10051,$error);
-					}
+				//if ($login_role_id == PARTNER_ORG || $login_role_id == PARTNER_PERSONAL) {
+				//	if (empty($user_info['identify_pic'])  ) {
+				//		$error['msg']='资料信息不全，请增加信息!!';
+				//		$error['id']=$user_info['id'];
+				//		return getAjaxResponse(10051,$error);
+				//	}
 
-					if (empty($user_info['yy_pic']) && $login_role_id == PARTNER_ORG ) {
-						$error['msg']='资料信息不全，请增加信息!!!';
-						$error['id']=$user_info['id'];
-						return getAjaxResponse(10056,$error);
-					}
+				//	if (empty($user_info['yy_pic']) && $login_role_id == PARTNER_ORG ) {
+				//		$error['msg']='资料信息不全，请增加信息!!!';
+				//		$error['id']=$user_info['id'];
+				//		return getAjaxResponse(10056,$error);
+				//	}
 
-					$c_status_val = intval($user_info['status']);
+				//	$c_status_val = intval($user_info['status']);
 
-					if($c_status_val === VER_NOT_AUDIT) { // 审核未通过
-						
-						$error['msg']='审核未通过';
-						$error['id']=$user_info['id'];
-						return getAjaxResponse(10052,$error);
-					}
+				//	if($c_status_val === VER_NOT_AUDIT) { // 审核未通过
+				//		
+				//		$error['msg']='审核未通过';
+				//		$error['id']=$user_info['id'];
+				//		return getAjaxResponse(10052,$error);
+				//	}
 
-					if($c_status_val === VER_IN_AUDIT) { // 审核未通过
-						$error['msg'] = '小编正在加紧审核，请稍候再试！';
-						return getAjaxResponse(10053,$error);
-					}
+				//	if($c_status_val === VER_IN_AUDIT) { // 审核未通过
+				//		$error['msg'] = '小编正在加紧审核，请稍候再试！';
+				//		return getAjaxResponse(10053,$error);
+				//	}
 
-				}
-				// 合伙人 end
+				//}
+				//// 合伙人 end
 
 				//维护最后登录时间
 				$time = date('Y-m-d H:i:s',time());

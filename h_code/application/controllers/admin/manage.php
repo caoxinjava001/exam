@@ -44,38 +44,38 @@ class Manage extends MY_Controller{
      * 所有管理员信息
      */
     public function allManager(){
-        $s_name = $this->input->get_post('s_name')?trim($this->input->get_post('s_name')):'';
-        $role_id=$this->input->get_post('role_id');
-        $dele_status=$this->input->get_post('dele_status');
-        
-        if(!empty($s_name)){
-            $this->where.=" and name like '%".$s_name."%'"; //角色
-        }
+        //$s_name = $this->input->get_post('s_name')?trim($this->input->get_post('s_name')):'';
+        //$role_id=$this->input->get_post('role_id');
+        //$dele_status=$this->input->get_post('dele_status');
+        //
+        //if(!empty($s_name)){
+        //    $this->where.=" and name like '%".$s_name."%'"; //角色
+        //}
 
-        if($role_id){
-            $role_id=intval($role_id);
-            $this->where.=" and role_id =".$role_id; //角色
-        }
+        //if($role_id){
+        //    $role_id=intval($role_id);
+        //    $this->where.=" and role_id =".$role_id; //角色
+        //}
 
-        if(strlen($dele_status)>0){
-            $dele_status= intval($dele_status);
-            $this->where.=" and dele_status =".$dele_status; //冻结
-        }
+        //if(strlen($dele_status)>0){
+        //    $dele_status= intval($dele_status);
+        //    $this->where.=" and dele_status =".$dele_status; //冻结
+        //}
 
-        $result=$this->admin_user_model->list_info('*',$this->where,$this->page,$this->perpage);
-        foreach($result as $k=>$v){
-            $result[$k]['role_name']=$this->getRoleName($v['role_id']);
-            $result[$k]['next_audit']=$this->getAllNext($v['role_id']);
-            $result[$k]['next_id']=$this->getNextId($v['id']);
-        }
+        //$result=$this->admin_user_model->list_info('*',$this->where,$this->page,$this->perpage);
+        //foreach($result as $k=>$v){
+        //    $result[$k]['role_name']=$this->getRoleName($v['role_id']);
+        //    $result[$k]['next_audit']=$this->getAllNext($v['role_id']);
+        //    $result[$k]['next_id']=$this->getNextId($v['id']);
+        //}
 
-        $data['data']=$result;
-        $data['s_name']=$s_name;
-        $data['sel_role']=$role_id;
-        $data['dele_status']=$dele_status;
-        $data['all_role']=$this->getAllRole();
+        //$data['data']=$result;
+        //$data['s_name']=$s_name;
+        //$data['sel_role']=$role_id;
+        //$data['dele_status']=$dele_status;
+        //$data['all_role']=$this->getAllRole();
 
-        $data['pages']=pages($this->admin_user_model->getCount($this->where),$this->page,$this->perpage);
+        //$data['pages']=pages($this->admin_user_model->getCount($this->where),$this->page,$this->perpage);
 
         $this->rendering_admin_template($data,'manage','man_list');
     }

@@ -7,18 +7,9 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i><?php echo (isset($left_top_id) && isset($menu_info[$left_top_id]))?$menu_info[$left_top_id]['name']:'';?></a>
                     <ul class="sub-menu">
-                        <?php  if(isset($left_top_id) && isset($menu_info[$left_top_id]['list'])){ 
-                            $i=0;
-                            $list = $menu_info[$left_top_id]['list'];
-                            foreach($list as $k=>$v):
-                                //echo '<pre>';
-                                //print_r($menu_info[$v]);
-                                if(intval($menu_info[$v]['display']) == 2){continue;}
-                            ?>
-                                <?php if($menu_info[$v]['name']){?>
-                                        <li><a href="<?php echo '/'.$menu_info[$v]['menu_class'].'/'.$menu_info[$v]['function'];?>"><i class="icon-font">&#xe008;</i><?php echo $menu_info[$v]['name'];?></a></li>
-                                <?php } ?>
-                    	<?php endforeach;}?>
+					<li><a href=""><i class="icon-font">&#xe008;</i>代理商管理</a></li>
+					<li><a href=""><i class="icon-font">&#xe008;</i>充值卡管理</a></li>
+					<li><a href=""><i class="icon-font">&#xe008;</i>试&nbsp卷&nbsp;管&nbsp;理</a></li>
 
                     </ul>
             </li>
