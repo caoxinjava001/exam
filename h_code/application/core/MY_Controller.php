@@ -152,8 +152,9 @@ class MY_Controller extends CI_Controller{
 					redirect(MAIN_PATH.'/admin/login', 'refresh');
 				}
 			}
-		}else{
+		} else {
 			$this->member_info = $ssoMemberInfo['member_info']; //用户信息
+			//var_dump($this->member_info);exit;
 			$this->org_info = $ssoMemberInfo['org_info']; //隶属信息
 			$this->mid = $this->member_info['id'];//登录者id
 			$this->nickname = empty($this->member_info['org_name']) ?$this->member_info['user_name'] : $this->member_info['org_name'];//登录者昵称
@@ -161,6 +162,7 @@ class MY_Controller extends CI_Controller{
 			$this->login_role_id = $this->member_info['login_role_id'];
 			//$this->org_name = $this->org_info['user_name'];//登录用户隶属分中心的昵称
 			$this->backend_header_data['nickname'] = $this->nickname;//登录者昵称 模版可以直接$nickname调用
+			//var_dump($this->nickname,$this->login_role_id);exit;
 			$this->backend_left_data['login_role_id'] = $this->login_role_id;
 			$this->checkMenu();
 		}

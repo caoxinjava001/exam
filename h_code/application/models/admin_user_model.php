@@ -52,14 +52,15 @@ class Admin_user_Model extends MY_Model{
 		
 		$info = $this->get_one('*',array('id'=>$id,'dele_status'=>NO_DELETE_STATUS));
 		if($info){
-			$data = array('id'=>$info['id'],
-					'mobile'=>$info['mobile'],
-					'user_name'=>$info['name'],
-					'org_name'=>$info['org_name'],
-					'login_role_id'=>$info['login_role_id'],
-					'role_id'=>$info['role_id'],
-					'last_login_date'=>$info['last_login_date'],
-					);
+			$data = $info;
+			//$data = array('id'=>$info['id'],
+			//		'mobile'=>$info['mobile'],
+			//		'user_name'=>$info['name'],
+			//		'org_name'=>$info['org_name'],
+			//		'login_role_id'=>$info['login_role_id'],
+			//		'role_id'=>$info['role_id'],
+			//		'last_login_date'=>$info['last_login_date'],
+			//		);
 			return $data;
 		}else{
 			return false;
