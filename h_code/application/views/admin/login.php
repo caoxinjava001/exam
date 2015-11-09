@@ -69,20 +69,7 @@
 			 function(data) {
 				var is_code_val = data["code"];
 				 if (is_code_val == 10050) {
-					window.location.href='/audit/allmember';//登录成功后的默认页面.
-
-				 } else if(is_code_val == 10051) { //合伙人  身份证
-					_show_msg(data['data'],2500);
-					window.location.href='/register_cop/auth_first?member_id='+data['data']['id'];
-
-				 } else if(is_code_val == 10056) { //合伙人  营业执照
-					_show_msg(data['data'],2500);
-					window.location.href='/register_cop/auth_sec?member_id='+data['data']['id'];
-
-
-				 } else if(is_code_val == 10052) { //合伙人  审核未通过
-					_show_msg(data['data'],2500);
-					window.location.href='/register_cop/index?member_id='+data['data']['id'];
+					window.location.href='/manage/index';//登录成功后的默认页面.
 				 } else {
 
 					//_show_msg(message_info,2500);

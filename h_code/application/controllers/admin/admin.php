@@ -74,7 +74,7 @@ class Admin extends MY_Controller {
 		//}
 		$data = array();
 		if($this->login_status) {
-			redirect(MAIN_PATH.'/audit/allmember', 'refresh'); //登录成功后的默认页面.
+			redirect(MAIN_PATH.'/manage/index', 'refresh'); //登录成功后的默认页面.
 		}
 		$this->load->view("admin/login",$data);
 	}

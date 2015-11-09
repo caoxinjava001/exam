@@ -90,10 +90,6 @@ $route['mycop/(:any)']="admin/mycop/$1";
 
 
 //  企业注册 s
-$route['bs/(:any)'] = "front/reg_business/$1";
-//  企业登入
-$route['login/(:any)'] = "front/login/$1";
-$route['show/(:any)'] = "usercentre/showStatus/$1";
 /*----------------------前台 end -----------------------------*/
 
 /*---------------------- 中心 start -----------------------------*/
@@ -104,36 +100,11 @@ $route['show/(:any)'] = "usercentre/showStatus/$1";
 /*----------------------用户中心 start -----------------------------*/
 // @todo
 /*----------------------用户中心 end -----------------------------*/
+$route['exam/(:any)']="admin/exam/$1";
 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
-##############销售人员创建和管理 start##############################
-$route['manage_sale/(:any)'] = "admin/manage_sale/$1";
-##############销售人员创建和管理 end##############################
-
-##############合伙人内勤创建和管理 start##############################
-$route['manage_inside/(:any)'] = "admin/manage_inside/$1";
-##############合伙人内勤创建和管理 end##############################
-
-##############审核日志列表 start##############################
-$route['review_log/(:any)'] = "admin/review_log/$1";
-##############审核日志列表 end##############################
-
-##############行业分类 列表 start##############################
-$route['industry_class/(:any)'] = "admin/industry_class/$1";
-##############行业分类 列表 end##############################
-
-$route['tools/(:any)'] = "front/tools/$1"; //圣康小工具
-$route['angel/(:any)'] = "front/angel/$1"; //圣康企业融资测试帮（天使轮）
-
-##############新三板调查信息 列表 start ##############################
-$route['xinsanban_investigation_info/(:any)'] = "admin/xinsanban_investigation_info/$1";
-##############新三板调查信息 列表 end ##############################
-
-##############天使轮 调查信息 列表 start ##############################
-$route['angel_investigation_info/(:any)'] = "admin/angel_investigation_info/$1";
-##############天使轮 调查信息 列表 end ##############################
 
 
 ?>
