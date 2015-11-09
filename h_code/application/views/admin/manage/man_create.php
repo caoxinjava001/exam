@@ -1,3 +1,6 @@
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/admin">首页</a><span class="crumb-step">&gt;</span><a href="/manage/index"><span class="crumb-name">代理商列表</span></a></div>
+</div>
 <link href="<?php echo STATICS_PATH;?>/css/ui/jquery-ui-custom.min.css" type="text/css" rel="stylesheet"/>
 <link href="<?php echo STATICS_PATH;?>/css/b_reg.css" type="text/css" rel="stylesheet"/>
 <script type="text/javascript" src="<?php echo STATICS_PATH;?>/js/ui/jquery-ui.custom.min.js"></script>
@@ -5,35 +8,49 @@
 <div class="xu" id="xu">
     <div class="cont_left">
         <div class="cont_demand">
-            <p class="demand_p1">创建管理员</p>
+            <p class="demand_p1"><?php echo $data_info['id']?'修改代理商':'增加代理商';?></p>
         </div>
         <form id="manage_add">
-            <input type="hidden" name="id" value="<?php echo $data_info['id'];?>"/>
+            <input type="hidden" name="check_id" value="<?php echo $data_info['id'];?>"/>
             <div class="demand_text">
                 <div class="text">
-                    <span class="floatL span1"><i>*</i>用户管理员:</span>
-                    <select <?php if($data_info['id'] == $this->mid){ echo 'disabled="disabled"';}?> class="sect_1 floatL" name="role_id">
-                        <option value="0">请选择用户角色</option>
-                        <?php foreach($roler as $v){?>
-                        <option <?php if($data_info['role_id'] && $v['id'] == $data_info['role_id']) echo 'selected="selected"';?> value="<?php echo $v[id];?>"><?php echo $v['name'];?></option>
+                    <span class="floatL span1"><i>*</i>代理商名称:</span>
+                    <input type="text" class="sect_1 floatL" name="name" placeholder="请填写代理商名称" value="<?php echo !empty($data_info['user_name'])?$data_info['user_name']:'';?>">
+                    <span class="span2 floatL">请填写代理商名称</span>
+                </div><div class="text">
+                    <span class="floatL span1"><i>*</i>省份:</span>
+                    <select  class="sect_1 floatL" name="province_id">
+                        <option value="0">请选择省份</option>
+                        <?php foreach($province as $v){?>
+                            <option <?php if($v['id']== $data_info['province']) echo 'selected="selected"';?> value="<?php echo $v['id'];?>"><?php echo $v['name'];?></option>
                         <?php }?>
                     </select>
                     <span class="span2 floatL">请选择用户角色</span>
                 </div>
                 <div class="text">
-                    <span class="floatL span1"><i>*</i>姓名:</span>
-                    <input type="text" class="sect_1 floatL" name="name" placeholder="请填写真实姓名" value="<?php echo !empty($data_info['name'])?$data_info['name']:'';?>">
-                    <span class="span2 floatL">请填写用户姓名</span>
+                    <span class="floatL span1"><i>*</i>城市:</span>
+                    <select  class="sect_1 floatL" name="city_id">
+                        <option value="0">请选择城市</option>
+                        <?php foreach($city as $v){?>
+                            <option <?php if($v['id']== $data_info['city']) echo 'selected="selected"';?> value="<?php echo $v['id'];?>"><?php echo $v['name'];?></option>
+                        <?php }?>
+                    </select>
+                    <span class="span2 floatL">请选择城市</span>
+                </div>
+                <div class="text">
+                    <span class="floatL span1"><i></i>地址:</span>
+                    <input type="text" class="sect_1 floatL" name="addr" placeholder="请填写地址" value="<?php echo !empty($data_info['addr'])?$data_info['addr']:'';?>">
+                    <span class="span2 floatL">请正确填写地址</span>
                 </div>
                 <div class="text">
                     <span class="floatL span1"><i>*</i>手机号:</span>
-                    <input type="text" class="sect_1 floatL" name="mobile" placeholder="请填写用户手机号" value="<?php echo !empty($data_info['mobile'])?$data_info['mobile']:'';?>">
+                    <input type="text" class="sect_1 floatL" name="mobile"  placeholder="请填写用户手机号" value="<?php echo !empty($data_info['mobile'])?$data_info['mobile']:'';?>">
                     <span class="span2 floatL">请正确填写用户手机号</span>
                 </div>
                 <div class="text">
-                    <span class="floatL span1"><i></i>业务代码:</span>
-                    <input type="text" class="sect_1 floatL" name="service_code" placeholder="请填写业务代码" value="<?php echo !empty($data_info['service_code'])?$data_info['service_code']:'';?>">
-                    <span class="span2 floatL">请正确填写业务代码</span>
+                    <span class="floatL span1"><i>*</i><i></i>邮箱:</span>
+                    <input type="text" class="sect_1 floatL" name="email" placeholder="请填写邮箱" value="<?php echo !empty($data_info['email'])?$data_info['email']:'';?>">
+                    <span class="span2 floatL">请正确填写邮箱</span>
                 </div>
                 <div class="text">
                     <span class="floatL span1"><i>*</i>密码:</span>
@@ -55,39 +72,32 @@
     </div>
 </div>
 
-<!--<script>
+<script>
     /**
      * Created By YJ 2015-05-25
+     *
+     * 获取相关城市
      */
-    var b=true,colum =$(".sect_1");
-
-    /**
-     * ajax 创建用户
-     */
-    $('#createManager').bind('click',function(){
+    $("[name='province_id']").bind('change',function(){
+        var b=$(this).val();
         if(b) {
-            var obj = {}, _msg={};
-            var up_data = $('#form1').serialize();
+            var obj = {}, _msg={},_html="<option value=\"0\">请选择城市</option>";
+            var up_data = {p_id:b};
             obj.data = up_data;
             obj.type = 'post';
-            obj.url = config.domain.wf+'/manage/z';
+            obj.url = config.domain.wf+'/manage/getCityById';
            _util.ajax(obj, function (d) {
-               _msg.msg = d.msg;
                if(d.status==1) {
-                   _msg.callback = function()
-                   {
-                       colum.attr('value','');
-                       location.href = '/manage/allManager';
-                       //跳转到绑定权限页面
-                       //location.href = '/information_auth/binding?mid='+d.data;
+                   var len= d.data.length;
+                   for(var i=0;i<len;i++) {
+                       _html += "<option value=\"" + d.data[i]['id'] + "\">" + d.data[i]['name'] + "</option>";
                    }
+                   $("[name='city_id']").html(_html);
                }
-                _show_msg(_msg,1000);
+
             });
-        }else{
-            _show_msg('表单填写有误！');
         }
     })
 
-</script>-->
+</script>
 <script type="text/javascript" src="<?php echo STATICS_PATH;?>/js/manage_add.js"></script>

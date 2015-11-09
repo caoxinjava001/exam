@@ -5,7 +5,7 @@
 (function (window) {
     var curr_form="#manage_add", t,errorCode = "40006",_status="1",
         _msg = {msg: "", time: 2500, width: "300px", height: "150px"},
-        login_success_code = "41001",member_id=$("[name='id']").val();
+        login_success_code = "41001",member_id=$("[name='check_id']").val();
 
     /**
      * params {form_name:"",elements:[{"ele_id":reg}]}
@@ -175,7 +175,7 @@
 
             if (_mark.length == 0) {
                 //验证手机是否唯一
-                p = {url: config.domain.wf + "/register_cop/is_single?member_id="+member_id, data: {type: 1, value: $(form.elements["mobile"].ele_selector).val()}};
+                p = {url: config.domain.wf + "/manage/is_single?member_id="+member_id, data: {type: 1, value: $(form.elements["mobile"].ele_selector).val()}};
                 _util.ajax(p, function (d) {
                     if (d&& d.status != _status) {
                         $(form.elements["mobile"].ele_selector).next("span").removeClass("span2").addClass("span4");
@@ -193,7 +193,7 @@
                                 _msg.callback = function()
                                 {
                                     if(member_id){
-                                        location.href = '/manage/allManager';
+                                        location.href = '/manage/index';
                                     }else{
                                         $(curr_form)[0].reset();
                                     }
@@ -216,6 +216,7 @@
             pwd_reg = /^[\S]{6,20}$/,
             repwd_reg = /^[\S]{6,20}$/,
             name = /^[\S]{1,20}$/,
+            email= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             select  = function(v){
                 var valid = true;
                 if(v=="0")valid= false;
@@ -228,9 +229,11 @@
         var v_data = {
             form_selector: curr_form,
             elements: {
-                "role_id": {ele_selector: "[name='role_id']", ele_type: "select", ele_regular: select, tips: {msg: "请选择用户角色", reg: "请正确选择用户角色"}},
-                "name": {ele_selector: "[name='name']", ele_type: "text", ele_regular: name, tips: {msg: "中英文均可，不超过20个字", reg: "请正确填写姓名"}},
+                "name": {ele_selector: "[name='name']", ele_type: "text", ele_regular: name, tips: {msg: "中英文均可，不超过20个字", reg: "请正确填写代理商"}},
+                "province_id": {ele_selector: "[name='province_id']", ele_type: "select", ele_regular: select, tips: {msg: "请选择省份", reg: "请正确选择省份"}},
+                "city_id": {ele_selector: "[name='city_id']", ele_type: "select", ele_regular: select, tips: {msg: "请选择城市", reg: "请正确选择城市"}},
                 "mobile": {ele_selector: "[name='mobile']", ele_type: "text", ele_regular: mb_reg, tips: {msg: "请填写手机号码", reg: "请正确填写手机号码"}},
+                "email": {ele_selector: "[name='email']", ele_type: "text", ele_regular: email, tips: {msg: "请填写邮箱", reg: "请正确填写邮箱"}},
                 "pwd": {ele_selector: "[name='password']", ele_type: "pwd", ele_regular: pwd_reg, tips: {msg: "请填写密码", reg: "请输入6-20位密码，区分大小写", to: "两次密码输入不一致，请重新输入！"}},
                 "repwd": {ele_selector: "[name='repassword']", ele_type: "repwd", ele_regular: repwd_reg, tips: {msg: "请填写确认密码", reg: "请输入6-20位密码，区分大小写", to: "两次密码输入不一致，请重新输入！"}}
             },

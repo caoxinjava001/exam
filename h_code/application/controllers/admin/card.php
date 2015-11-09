@@ -6,7 +6,7 @@
  * Time: 20:00
  */
 
-class Manage extends MY_Controller{
+class Card extends MY_Controller{
     private $where; //where条件
     private $perpage=10; //每页条数
 
@@ -15,6 +15,7 @@ class Manage extends MY_Controller{
         $this->load->model('admin_user_model');
         $this->load->model('province_model');
         $this->load->model('city_model');
+        $this->load->model('card_info_model');
         $this->page=$this->input->get('page')>=1?$this->input->get('page'):0;
 
     }
@@ -25,30 +26,54 @@ class Manage extends MY_Controller{
     public function index(){
         $this->where= 'dele_status = '.NO_DELETE_STATUS;    //未删除的
 
-        $select_id=$this->input->get_post('select_id'); //选择的省份id
-        if($select_id){
-            $this->where.= ' and province = '.$select_id;    //选择省份
+        $number=$this->input->get_post('number'); //卡号
+        if($number){
+            $this->where.= " and number = '{$number}'";
+        }
+
+        $select_id=$this->input->get_post('select_id'); //选择的卡状态
+        if(strlen($select_id)>0){
+            $select_id=intval($select_id);
+            $this->where.= ' and use_status = '.$select_id;
+        }else{
+            $select_id=null;
         }
 
         $s_name=$this->input->get_post('s_name'); //填写的代理商名字
         if($s_name){
-            $this->where.= " and user_name like '%{$s_name}%'";    //检索代理商
+            $where_id= "dele_status =".NO_DELETE_STATUS." and user_name like '%{$s_name}%'";    //检索代理商
+            $temp=$this->admin_user_model->get_one('id',$where_id);
+            if(!empty($temp)){
+                $this->where.=" and admin_id in (".implode(',',$temp).")";
+            }else{
+                $this->where.=" and admin_id in (0)";
+            }
         }
 
-        $res=$this->admin_user_model->list_info('*',$this->where,$this->page,$this->perpage);
+        $start_time=trim($this->input->get_post('start_time')); //开始时间
+        $end_time=trim($this->input->get_post('end_time')); //结束时间
+        if($start_time){
+            $this->where.= " and use_start_time like '%{$start_time}%'";
+        }
+        if($end_time){
+            $this->where.= " and use_end_time like '%{$end_time}%'";
+        }
+
+        $res=$this->card_info_model->list_info('*',$this->where,$this->page,$this->perpage);
         foreach($res as $k=>$v){
-            $tmp1=$this->province_model->getProvince(1,$v['province']);
-            $tmp2=$this->city_model->getCity(1,$v['city']);
-            $res[$k]['zone']=$tmp1['name'].' '.$tmp2['name'];
+            $temp=$this->admin_user_model->get_one('*',array('id'=>$v['admin_id']));
+            $res[$k]['admin_name']=$temp['user_name'];
         }
 
-        $data['province']=$this->province_model->getProvince();
+        $data['number']=$number;
         $data['data']=$res;
         $data['select_id']=$select_id;
         $data['s_name']=$s_name;
-        $data['pages']=pages($this->admin_user_model->getCount($this->where),$this->page,$this->perpage);
+        $data['start_time']=$start_time;
+        $data['end_time']=$end_time;
+        $data['pages']=pages($this->card_info_model->getCount($this->where),$this->page,$this->perpage);
 
-        $this->rendering_admin_template($data,'manage','man_list');
+        $this->rendering_admin_template($data,'card','card_list');
 
     }
 
@@ -58,7 +83,7 @@ class Manage extends MY_Controller{
     public function create(){
         $data=array();
         $data['province']=$this->province_model->getProvince();
-        $this->rendering_admin_template($data,'manage','man_create');
+        $this->rendering_admin_template($data,'card','card_create');
     }
 
     /**
@@ -68,14 +93,13 @@ class Manage extends MY_Controller{
         $id=$this->input->get_post('id');
         $where['id']=$id;
 
-        $data_info=$this->admin_user_model->get_one('*',$where);
+        $data_info=$this->card_info_model->get_one('*',$where);
         $province=$this->province_model->getProvince();
 
         $data['data_info']=$data_info;
         $data['province']=$province;
-        $data['city']=$this->city_model->getList($data_info['province']);
 
-        $this->rendering_admin_template($data,'manage','man_create');
+        $this->rendering_admin_template($data,'card','card_create');
     }
 
     /**

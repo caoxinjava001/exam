@@ -37,11 +37,11 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 /*********域名常量start************/
-define('MAIN_PATH',        'http://182.92.72.93:9010');
-define('STATICS_PATH', 		'http://182.92.72.93:9010/statics/main');	//静态页面系统地址
+define('MAIN_PATH',        'http://www.exam.test');
+define('STATICS_PATH', 		'http://www.exam.test/statics/main');	//静态页面系统地址
 define('MAIN_H_PATH', 		'http://'.$_SERVER['HTTP_HOST']);//分中心网地址
-define('ADMIN_PATH',        'http://182.92.72.93:9010');	//社区接口
-define('PIC_PATH',        'http://pic.kangm.cn');	//图片路径
+define('ADMIN_PATH',        'http://www.exam.test');	//社区接口
+define('PIC_PATH',        'http://www.exam.test');	//图片路径
 //define('HOME_PATH',         'http://home.yduedu.com/');		//社区接口
 //define('NEWS_PATH',         'http://news.yduedu.com');		//金衡网新闻中心地址
 //define('WWW_IMG_PATH',      STATICS_PATH.'/yidu_web3.0/images/');

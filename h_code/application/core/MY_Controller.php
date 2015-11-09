@@ -68,7 +68,7 @@ class MY_Controller extends CI_Controller{
 
 		} else {
 			// 后台管理 信息
-			$this->checkBackLogin(); // 检测后台用户登录状态
+//			$this->checkBackLogin(); // 检测后台用户登录状态
 		}
 	}
 
