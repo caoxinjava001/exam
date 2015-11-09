@@ -2,12 +2,12 @@
  * Created by tony on 14-12-9.
  */
 
-_suffix="xinnuos.com";
+_suffix="exam.test";
 config = {
     domain: {
-        wf:"http://wf."+_suffix,
-        statics: "http://wf."+_suffix+"/statics/",
-        upload : "http://upload.kangm.cn/"
+        wf:"http://www."+_suffix,
+        statics: "http://www."+_suffix+"/statics/",
+        upload : "http://upload.exam.test/"
     },
     d:function(){return new Date();},
     //版本号

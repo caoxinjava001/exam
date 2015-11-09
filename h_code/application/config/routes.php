@@ -75,8 +75,8 @@ $route['information_detail/(:any)'] = "information/information_detail/$1";
 // @todo
 //合伙人注册 start 
 $route['register_cop/(:any)'] = "admin/register_cop/$1";
-$route['audit']="admin/audit/index";
-$route['audit/(:any)']="admin/audit/$1";
+//$route['audit']="admin/audit/index";
+$route['card/(:any)']="admin/card/$1";
 $route['enterprise/(:any)'] = "admin/enterprise/$1";
 $route['market/(:any)'] = "admin/market/$1";
 $route['enterprise_sort/(:any)'] = "admin/enterprise_sort/$1"; //企业信息分类
