@@ -20,10 +20,10 @@ class Card extends MY_Controller{
         $this->load->model('card_info_model');
         $this->page=$this->input->get('page')>=1?$this->input->get('page'):0;
 
-//        $this->login_role=$this->member_info['login_role'];
-//        $this->member_id=$this->member_info['id'];
-        $this->login_role=2;
-        $this->member_id=5;
+        $this->login_role=$this->member_info['login_role_id'];
+        $this->member_id=$this->member_info['id'];
+//        $this->login_role=2;
+//        $this->member_id=5;
     }
 
     /**
