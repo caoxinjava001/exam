@@ -22,6 +22,8 @@ class Classify extends MY_Controller{
         $this->member_id=$this->member_info['id'];
 //        $this->login_role=2;
 //        $this->member_id=5;
+        $this->valid(); //不是管理员不容许操作
+
     }
 
     /**
@@ -217,4 +219,12 @@ class Classify extends MY_Controller{
         }
     }
 
+    /**
+     * 不是管理员则跳转
+     */
+    protected function valid(){
+        if($this->login_role!=MANGER_ROLE_INFO){
+            redirect(MAIN_PATH.'/manage/index');
+        }
+    }
 }
