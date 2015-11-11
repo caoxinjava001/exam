@@ -229,7 +229,7 @@ function get_stat_date()
  * @return void
  * by jackcao
  */
-function createDomainAjax($message, $status = 0,$domain= "182.92.72.93", $function = "getShow" ) {
+function createDomainAjax($message, $status = 0,$domain= "www.exam.test", $function = "getShow" ) {
 	$ret = "<script language='javascript'>";
 	if (!empty($domain)) {
 		$ret .= "document.domain='".$domain."';";

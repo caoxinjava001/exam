@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://182.92.72.93:9010/';
+$config['base_url']	= 'http://www.exam.test/';
 
 
 /*
@@ -267,7 +267,7 @@ $config['sess_time_to_update']	= 300;
 |
 */
 $config['cookie_prefix']	= "";
-$config['cookie_domain']	= "182.92.72.93";
+$config['cookie_domain']	= "www.exam.test";
 $config['cookie_path']		= "/";
 $config['cookie_expiration']	= 0;//过期时间 默认会话关闭浏览器就清除cookie
 $config['cookie_secure']	= FALSE;
@@ -363,7 +363,7 @@ $config['proxy_ips'] = '';
 /**
  *  
  */
-$config['base_static']  = 'http://182.92.72.93:9010/statics/';
+$config['base_static']  = 'http://www.exam.test/statics/';
 
 
 /*
