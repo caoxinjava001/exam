@@ -158,10 +158,11 @@ class Manage extends MY_Controller{
 
         if($id){
             $where_m['id']=$id;
+            $where_m['dele_status']=NO_DELETE_STATUS;
             $mem_info=$this->admin_user_model->get_one('*',$where_m);
             if($mem_info['mobile']!=$mobile) {
                 //判断手机号是否唯一
-                $where_m = "id <> {$id} and mobile ='{$mobile}'";
+                $where_m = "id <> {$id} and mobile ='{$mobile}' and dele_status=".NO_DELETE_STATUS;
                 if ($this->admin_user_model->get_one('*', $where_m)) {
                     $data = array(
                         'status' => 0,
@@ -170,9 +171,11 @@ class Manage extends MY_Controller{
                     exit(json_encode($data));
                 }
             }
+            $post_data['up_date']=date('Y-m-d H:i:s');
+
         }else {
             //判断手机号是否唯一
-            $where_m = "mobile ='{$mobile}'";
+            $where_m = "mobile ='{$mobile}' and dele_status=".NO_DELETE_STATUS;
             if ($this->admin_user_model->get_one('*', $where_m)) {
                 $data = array(
                     'status' => 0,

@@ -160,11 +160,12 @@ class Card extends MY_Controller{
 
         if($id){
             $where_c['id']=$id;
+            $where_c['dele_status']=NO_DELETE_STATUS;
 
             $nem_info=$this->card_info_model->get_one('*',$where_c);
 
             if($nem_info['number']!=$number){
-                $where_m="number ='{$number}' and id <> ".$id;
+                $where_m="number ='{$number}' and id <> ".$id." and dele_status=".NO_DELETE_STATUS;
                 if($this->card_info_model->get_one('*',$where_m)){
                     $data=array(
                         'status'=>0,
@@ -175,7 +176,7 @@ class Card extends MY_Controller{
             }
         }else {
             //判断卡号是否唯一
-            $where_m = "number ='{$number}'";
+            $where_m = "number ='{$number}' and dele_status=".NO_DELETE_STATUS;
             if ($this->card_info_model->get_one('*', $where_m)) {
                 $data = array(
                     'status' => 0,
@@ -224,7 +225,7 @@ class Card extends MY_Controller{
 
         }
         //判断卡号是否唯一
-        $where_m = "number ='{$number}'";
+        $where_m = "number ='{$number}' and dele_status=".NO_DELETE_STATUS;
         if($this->card_info_model->get_one('*',$where_m)){
             $data=array(
                 'status'=>0,
