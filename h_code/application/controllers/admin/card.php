@@ -9,6 +9,8 @@
 class Card extends MY_Controller{
     private $where; //where条件
     private $perpage=10; //每页条数
+    private $login_role;
+    private $member_id;
 
     public function __construct(){
         parent::__construct();
@@ -18,6 +20,10 @@ class Card extends MY_Controller{
         $this->load->model('card_info_model');
         $this->page=$this->input->get('page')>=1?$this->input->get('page'):0;
 
+//        $this->login_role=$this->member_info['login_role'];
+//        $this->member_id=$this->member_info['id'];
+        $this->login_role=2;
+        $this->member_id=5;
     }
 
     /**
@@ -25,6 +31,11 @@ class Card extends MY_Controller{
      */
     public function index(){
         $this->where= 'dele_status = '.NO_DELETE_STATUS;    //未删除的
+
+        //限制运营商权限
+        if($this->login_role==THIRD_ROLE_INFO){
+            $this->where.=' and admin_id='.$this->member_id;
+        }
 
         $number=$this->input->get_post('number'); //卡号
         if($number){
@@ -71,6 +82,7 @@ class Card extends MY_Controller{
         $data['s_name']=$s_name;
         $data['start_time']=$start_time;
         $data['end_time']=$end_time;
+        $data['login_role']=$this->login_role;
         $data['pages']=pages($this->card_info_model->getCount($this->where),$this->page,$this->perpage);
 
         $this->rendering_admin_template($data,'card','card_list');
@@ -82,7 +94,8 @@ class Card extends MY_Controller{
      */
     public function create(){
         $data=array();
-        $data['province']=$this->province_model->getProvince();
+        $where['dele_status']=NO_DELETE_STATUS;
+        $data['admin_users']=$this->admin_user_model->select('id,user_name',$where);
         $this->rendering_admin_template($data,'card','card_create');
     }
 
@@ -91,13 +104,18 @@ class Card extends MY_Controller{
      */
     public function edit(){
         $id=$this->input->get_post('id');
+
         $where['id']=$id;
+        if($this->login_role==THIRD_ROLE_INFO){
+            $where['admin_id']=$this->member_id;
+        }
 
         $data_info=$this->card_info_model->get_one('*',$where);
-        $province=$this->province_model->getProvince();
+
+        $where1['dele_status']=NO_DELETE_STATUS;
+        $data['admin_users']=$this->admin_user_model->select('id,user_name',$where1);
 
         $data['data_info']=$data_info;
-        $data['province']=$province;
 
         $this->rendering_admin_template($data,'card','card_create');
     }
@@ -106,110 +124,78 @@ class Card extends MY_Controller{
      * ajax 处理管理员新建
      *
      */
-    public function createManager(){
+    public function createCard(){
+        if($this->login_role==THIRD_ROLE_INFO){
+            $data=array(
+                'status'=>0,
+                'msg'=>'您没有权限！'
+            );
+            exit(json_encode($data));
+        }
+
         $id=$this->input->get_post('check_id');
-        $name= $this->input->get_post('name');
-        $province_id = $this->input->get_post('province_id')?$this->input->get_post('province_id'):0; //省id
-        $city_id = $this->input->get_post('city_id')?$this->input->get_post('city_id'):0; //市id
-        $addr= $this->input->get_post('addr');
-        $mobile= $this->input->get_post('mobile');
-        $email= $this->input->get_post('email');
-        $password= $this->input->get_post('password');
-        $repassword= $this->input->get_post('repassword');
+        $number=trim($this->input->get_post('number'));
+        $admin_id=$this->input->get_post('admin_id');
+        $select_id=$this->input->get_post('select_id');
 
-        //用户名
-        if(!$name){
+        //卡号
+        if(strlen($number)<1){
             $data=array(
                 'status'=>0,
-                'msg'=>'请填写代理商！'
+                'msg'=>'请填写卡号！'
             );
             exit(json_encode($data));
         }
-        //省id
-        if(!$province_id){
-            $data=array(
-                'status'=>0,
-                'msg'=>'请选择省！'
-            );
-            exit(json_encode($data));
-        }
-        //省id
-        if(!$city_id){
-            $data=array(
-                'status'=>0,
-                'msg'=>'请选择市！'
-            );
-            exit(json_encode($data));
-        }
-        //手机号不能为空
-        if(!$mobile){
-            $data=array(
-                'status'=>0,
-                'msg'=>'请填写手机号码！'
-            );
-            exit(json_encode($data));
-        }
-        //判断手机号是否唯一
-        $where_m = "mobile ='{$mobile}'";
-        if($this->admin_user_model->get_one('*',$where_m)&&!$id){
-            $data=array(
-                'status'=>0,
-                'msg'=>'手机号码已存在！'
-            );
-            exit(json_encode($data));
-        }
-        //手机号码的合法性
-        if(!preg_match("/^13[0-9]{1}[0-9]{8}$|17[0-9]{1}[0-9]{8}$|15[0-9]{9}$|18{1}[0-9]{9}$/",$mobile)){
-            $data = array(
-                'status' => 0,
-                'msg' => '手机号不合法！',
-            );
-            exit(json_encode($data));
-        }
-        //判断密码是否一致
-        if(!empty($password) && !empty($repassword)){
-            if(strlen(trim($password))<6){
-                $data=array(
-                    'status'=>0,
-                    'msg'=>'密码长度至少6位！'
-                );
-                exit(json_encode($data));
 
-            }elseif( trim($password) !== trim($repassword)){
-                $data=array(
-                    'status'=>0,
-                    'msg'=>'密码不一致！'
+        //代理商
+        if(!$admin_id){
+            $data=array(
+                'status'=>0,
+                'msg'=>'请选择代理商！'
+            );
+            exit(json_encode($data));
+        }
+
+
+        if($id){
+            $where_c['id']=$id;
+
+            $nem_info=$this->card_info_model->get_one('*',$where_c);
+
+            if($nem_info['number']!=$number){
+                $where_m="number ='{$number}' and id <> ".$id;
+                if($this->card_info_model->get_one('*',$where_m)){
+                    $data=array(
+                        'status'=>0,
+                        'msg'=>'充值卡号已存在！'
+                    );
+                    exit(json_encode($data));
+                }
+            }
+        }else {
+            //判断卡号是否唯一
+            $where_m = "number ='{$number}'";
+            if ($this->card_info_model->get_one('*', $where_m)) {
+                $data = array(
+                    'status' => 0,
+                    'msg' => '充值卡号已存在！'
                 );
                 exit(json_encode($data));
             }
-            //密码加密存放
-            $encrypt = randomstr();
-            $post_data['password'] = encryptMd5(trim($password),$encrypt);
-            $post_data['encrypt'] = $encrypt;
-        }else{ //新增
-            if(!$id){
-                $data=array(
-                    'status'=>0,
-                    'msg'=>'密码不能为空！'
-                );
-                exit(json_encode($data));
-            }
+
         }
 
-        $post_data['user_name']=$name;
-        $post_data['province']=$province_id;
-        $post_data['city']=$city_id;
-        $post_data['addr']=$addr;
-        $post_data['mobile']=$mobile;
-        $post_data['email']=$email;
+        $post_data['number']=$number;
+        $post_data['admin_id']=$admin_id;
+        $post_data['use_status']=$select_id;
 
 
         //执行插入
         if(!$id){
-            $r = $this->admin_user_model->insert($post_data,true);
+            $r = $this->card_info_model->insert($post_data,true);
             $msg = '创建成功！';
         }else{
-            $r = $this->admin_user_model->update($post_data,'id ='.$id);
+            $r = $this->card_info_model->update($post_data,'id ='.$id);
             $msg = '修改成功！';
         }
 
@@ -221,79 +207,36 @@ class Card extends MY_Controller{
 
     }
 
-    /**
-     * 删除代理商
-     */
-    public function deleteAgent(){
-        $info = array(
-            'status' => 0,
-            'msg' => '删除失败',
-        );
-
-        $id=$this->input->get_post('id')?$this->input->get_post('id'):0;
-
-        if(!$id){
-            exit(json_encode($info));
-        }
-
-        $where="id in ({$id}) ";
-        $data['dele_status']=DELETE_STATUS;
-        $bool=$this->admin_user_model->update($data,$where);
-
-        if($bool){
-            $info = array(
-                'status' => 1,
-                'msg' => '删除成功',
-            );
-            exit(json_encode($info));
-        }
-        exit(json_encode($info));
-    }
 
     /**
-     * 检查手机号码唯一性
+     * 检查充值卡号码唯一性
      */
     public function is_single(){
-        $member_id=$this->input->get_post('member_id');
-        $mobile=$this->input->get_post('value');
+        $number=$this->input->get_post('number');
 
-        if($member_id){
+        if(strlen($number)<0){
             $data=array(
-                'status'=>1,
-                'msg'=>'数据获取成功！'
+                'status'=>0,
+                'msg'=>'请填写卡号！'
             );
             exit(json_encode($data));
 
         }
-        //判断手机号是否唯一
-        $where_m = "mobile ='{$mobile}'";
-        if($this->admin_user_model->get_one('*',$where_m)){
+        //判断卡号是否唯一
+        $where_m = "number ='{$number}'";
+        if($this->card_info_model->get_one('*',$where_m)){
             $data=array(
                 'status'=>0,
-                'msg'=>'手机号码已存在！'
+                'msg'=>'充值卡号已存在！'
             );
             exit(json_encode($data));
         }else{
             $data=array(
                 'status'=>1,
-                'msg'=>'手机号码可用！'
+                'msg'=>'充值卡号可用！'
             );
             exit(json_encode($data));
         }
     }
 
-    /**
-     * 获取城市列表
-     */
-    public function getCityById(){
-        $p_id=$this->input->get_post('p_id');
-
-        $tmp=$this->city_model->getList($p_id);
-        $data=array(
-            'status'=>1,
-            'data'=>$tmp,
-            'msg'=>'数据获取成功！'
-        );
-        exit(json_encode($data));
-    }
 }

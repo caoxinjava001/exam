@@ -5,6 +5,7 @@
     </div>
     <div class="search-wrap">
         <div class="search-content">
+            <?php if($login_role==MANGER_ROLE_INFO){?>
             <form method="get">
                 <table class="search-tab">
                     <tr>
@@ -29,11 +30,14 @@
                         </td>
                 </table>
             </form>
+            <?php }?>
         </div>
     </div>
     <div class="result-wrap">
         <form name="myform" id="myform" method="post">
+            <?php if($login_role==MANGER_ROLE_INFO){?>
             <a id="dele_select_agents" class="btn btn-primary btn2" href="javascript:;" >批量删除</a>
+            <?php }?>
             <div class="result-content">
                 <table class="result-tab" width="100%">
                     <tr>
@@ -55,7 +59,9 @@
                             <td><?php echo $v['up_date']?></td>
                             <td>
                                 <a class="audit" href="<?php MAIN_PATH;?>/manage/edit?id=<?php echo $v['id'];?>" >修改</a>
+                                <?php if($login_role==MANGER_ROLE_INFO){?>
                                 <a class="dele_Agent" href="javascript:;" rel="<?php echo $v['id'];?>" >删除</a>
+                                <?php }?>
                             </td>
                         </tr>
                     <?php }?>

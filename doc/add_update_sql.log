@@ -1,0 +1,4 @@
+
+alter table `h_admin_user` change `email` `email` varchar(32) DEFAULT NULL COMMENT '邮箱’;   —by Eric Young 2015-11-07
+alter table h_card_info modify create_date timestamp null default CURRENT_TIMESTAMP comment '创建时间'; —by Eric Young 2015-11-10
+alter table h_admin_user modify up_date timestamp null default CURRENT_TIMESTAMP comment '修改时间'; —by Eric Young 2015-11-10

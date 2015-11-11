@@ -10,12 +10,14 @@
                     <tr>
                         <th width="100">充值卡号:</th>
                         <td>
-                            <input type="text" name="number" id="number" value="<?echo $number; ?>" />
+                            <input type="text" name="number" id="number" value="<?echo $number; ?>"/>
                         </td>
+                        <?php if($login_role==MANGER_ROLE_INFO){?>
                         <th width="100">代理商名称:</th>
                         <td>
                             <input type="text" name="s_name" id="s_name" value="<?echo $s_name; ?>" /> 
                         </td>
+                        <?php }?>
                         <th width="80">卡状态:</th>
                         <td>
                             <select name="select_id">
@@ -26,10 +28,10 @@
                         </td>
                         <th width="120">开始/结束时间:</th>
                         <td>
-                            <input type="text" name="start_time"  value="<?echo $start_time; ?>" />
+                            <input type="text" name="start_time" id="s_date_start" class="xx_time"  value="<?echo $start_time; ?>" />
                         </td>
                         <td>
-                            <input type="text" name="end_time"  value="<?echo $end_time; ?>" />
+                            <input type="text" name="end_time" id="s_date_end" class="xx_time" value="<?echo $end_time; ?>" />
                         </td>
                         <td>
                             <input class="btn btn-primary btn2" value="查询" type="submit">
@@ -82,76 +84,37 @@
         </form>
     </div>
 </div>
-
+<link href="<?php echo STATICS_PATH;?>/css/ui/jquery-ui-custom.min.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo STATICS_PATH;?>/css/ui/jquery-ui-timepicker-addon.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="<?php echo STATICS_PATH;?>/js/ui/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH;?>/js/ui/jquery.ui.datepicker-zh.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH;?>/js/ui/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH;?>/js/ui/jquery-ui-timepicker-zh-CN.js"></script>
 <script>
-    /**
-     * 删除和批量删除
-     * Created By YJ 2015-11-7
-     */
-    /*$(function(){
-        var url=config.domain.wf+'/manage/deleteAgent';
-        //批量删除
-        $('#dele_select_agents').bind('click',function(){
-            var obj={},data={},ids='',_msg={};
-            var _dom= $("input:checkbox[name='ids']:checked");
-            var _len=_dom.length;
-            var i=1;
+    $(document).ready(function() {
+        /****日历 start***/
+        $('#s_date_start').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel:true,
+            closeText:"关闭",
+            onSelect:function(selectedDate){
+                //当选择开始日期后，设置结束日期的最小值
+                $( "#s_date_end" ).datepicker( "option", "minDate", selectedDate );
+            }
+        });
 
-            _dom.each(function () {
-                ids+=$(this).parent().next().html();
-                if(i<_len){
-                    ids+=',';
-                }
-                i+=1;
-            });
-
-            data.id=ids;
-
-            obj.data=data;
-            obj.type='post';
-            obj.url=url;
-
-            _util.ajax(obj,function(d){
-                _msg.msg= d.msg;
-                _msg.callback=function(){
-                    window.location.reload();
-                }
-                _show_msg(_msg,2000);
-            });
-        })
-
-        //单个删除
-        $('.dele_Agent').bind('click',function(){
-            var obj={},data={},_msg={};
-            var _id= $(this).attr('rel');
-            var _s='';
-
-            data.id=_id;
-
-            obj.data=data;
-            obj.type='post';
-            obj.url=url;
-
-            _util.ajax(obj,function(d){
-                _msg.msg= d.msg;
-                _msg.callback=function(){
-                    window.location.reload();
-                }
-                _show_msg(_msg,2000);
-            });
-        })
-    })
-
-
-    //全选
-    $('.allChoose').bind('click',function(){
-        var _this_status=$(this).attr('checked');
-        if(_this_status=='checked'){
-            $("input[name='ids']").attr('checked',true);
-        }else{
-            $("input[name='ids']").attr('checked',false);
-        }
-    })*/
-
+        $('#s_date_end').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            closeText: "关闭",
+            onSelect:function(selectedDate){
+                //当开选择开始日期后，设置结束日期的最小值
+                $( "#date_start" ).datepicker( "option", "maxDate", selectedDate );
+            }
+        });
+        /***日历 end***/
+    });
 </script>
 <!--/main-->

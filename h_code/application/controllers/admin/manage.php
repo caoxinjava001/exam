@@ -9,6 +9,8 @@
 class Manage extends MY_Controller{
     private $where; //where条件
     private $perpage=10; //每页条数
+    private $login_role;
+    private $member_id;
 
     public function __construct(){
         parent::__construct();
@@ -16,7 +18,10 @@ class Manage extends MY_Controller{
         $this->load->model('province_model');
         $this->load->model('city_model');
         $this->page=$this->input->get('page')>=1?$this->input->get('page'):0;
-
+//        $this->login_role=$this->member_info['login_role'];
+//        $this->member_id=$this->member_info['id'];
+        $this->login_role=2;
+        $this->member_id=5;
     }
 
     /**
@@ -24,6 +29,11 @@ class Manage extends MY_Controller{
      */
     public function index(){
         $this->where= 'dele_status = '.NO_DELETE_STATUS;    //未删除的
+
+        //限制运营商权限
+        if($this->login_role==THIRD_ROLE_INFO){
+            $this->where.=' and id='.$this->member_id;
+        }
 
         $select_id=$this->input->get_post('select_id'); //选择的省份id
         if($select_id){
@@ -46,6 +56,7 @@ class Manage extends MY_Controller{
         $data['data']=$res;
         $data['select_id']=$select_id;
         $data['s_name']=$s_name;
+        $data['login_role']=$this->login_role;
         $data['pages']=pages($this->admin_user_model->getCount($this->where),$this->page,$this->perpage);
 
         $this->rendering_admin_template($data,'manage','man_list');
@@ -66,7 +77,12 @@ class Manage extends MY_Controller{
      */
     public function edit(){
         $id=$this->input->get_post('id');
-        $where['id']=$id;
+
+        if($this->login_role==THIRD_ROLE_INFO){
+            $where['id']=$this->member_id;
+        }else{
+            $where['id']=$id;
+        }
 
         $data_info=$this->admin_user_model->get_one('*',$where);
         $province=$this->province_model->getProvince();
@@ -83,12 +99,17 @@ class Manage extends MY_Controller{
      *
      */
     public function createManager(){
-        $id=$this->input->get_post('check_id');
+        if($this->login_role==THIRD_ROLE_INFO){
+            $id=$this->member_id;
+        }else{
+            $id=$this->input->get_post('check_id');
+        }
+
         $name= $this->input->get_post('name');
         $province_id = $this->input->get_post('province_id')?$this->input->get_post('province_id'):0; //省id
         $city_id = $this->input->get_post('city_id')?$this->input->get_post('city_id'):0; //市id
         $addr= $this->input->get_post('addr');
-        $mobile= $this->input->get_post('mobile');
+        $mobile= trim($this->input->get_post('mobile'));
         $email= $this->input->get_post('email');
         $password= $this->input->get_post('password');
         $repassword= $this->input->get_post('repassword');
@@ -125,51 +146,62 @@ class Manage extends MY_Controller{
             );
             exit(json_encode($data));
         }
-        //判断手机号是否唯一
-        $where_m = "mobile ='{$mobile}'";
-        if($this->admin_user_model->get_one('*',$where_m)&&!$id){
-            $data=array(
-                'status'=>0,
-                'msg'=>'手机号码已存在！'
-            );
-            exit(json_encode($data));
-        }
+
         //手机号码的合法性
-        if(!preg_match("/^13[0-9]{1}[0-9]{8}$|17[0-9]{1}[0-9]{8}$|15[0-9]{9}$|18{1}[0-9]{9}$/",$mobile)){
+        if (!preg_match("/^13[0-9]{1}[0-9]{8}$|17[0-9]{1}[0-9]{8}$|15[0-9]{9}$|18{1}[0-9]{9}$/", $mobile)) {
             $data = array(
                 'status' => 0,
                 'msg' => '手机号不合法！',
             );
             exit(json_encode($data));
         }
+
+        if($id){
+            $where_m['id']=$id;
+            $mem_info=$this->admin_user_model->get_one('*',$where_m);
+            if($mem_info['mobile']!=$mobile) {
+                //判断手机号是否唯一
+                $where_m = "id <> {$id} and mobile ='{$mobile}'";
+                if ($this->admin_user_model->get_one('*', $where_m)) {
+                    $data = array(
+                        'status' => 0,
+                        'msg' => '手机号码已存在！'
+                    );
+                    exit(json_encode($data));
+                }
+            }
+        }else {
+            //判断手机号是否唯一
+            $where_m = "mobile ='{$mobile}'";
+            if ($this->admin_user_model->get_one('*', $where_m)) {
+                $data = array(
+                    'status' => 0,
+                    'msg' => '手机号码已存在！'
+                );
+                exit(json_encode($data));
+            }
+        }
+
         //判断密码是否一致
-        if(!empty($password) && !empty($repassword)){
-            if(strlen(trim($password))<6){
-                $data=array(
-                    'status'=>0,
-                    'msg'=>'密码长度至少6位！'
+        if (!empty($password) && !empty($repassword)) {
+            if (strlen(trim($password)) < 6) {
+                $data = array(
+                    'status' => 0,
+                    'msg' => '密码长度至少6位！'
                 );
                 exit(json_encode($data));
 
-            }elseif( trim($password) !== trim($repassword)){
-                $data=array(
-                    'status'=>0,
-                    'msg'=>'密码不一致！'
+            } elseif (trim($password) !== trim($repassword)) {
+                $data = array(
+                    'status' => 0,
+                    'msg' => '密码不一致！'
                 );
                 exit(json_encode($data));
             }
             //密码加密存放
             $encrypt = randomstr();
-            $post_data['password'] = encryptMd5(trim($password),$encrypt);
+            $post_data['password'] = encryptMd5(trim($password), $encrypt);
             $post_data['encrypt'] = $encrypt;
-        }else{ //新增
-            if(!$id){
-                $data=array(
-                    'status'=>0,
-                    'msg'=>'密码不能为空！'
-                );
-                exit(json_encode($data));
-            }
         }
 
         $post_data['user_name']=$name;
@@ -201,6 +233,13 @@ class Manage extends MY_Controller{
      * 删除代理商
      */
     public function deleteAgent(){
+        if($this->login_role_id!=MANGER_ROLE_INFO){
+            $info = array(
+                'status' => 0,
+                'msg' => '无权限操作！',
+            );
+            exit(json_encode($info));
+        }
         $info = array(
             'status' => 0,
             'msg' => '删除失败',
@@ -272,4 +311,5 @@ class Manage extends MY_Controller{
         );
         exit(json_encode($data));
     }
+
 }
