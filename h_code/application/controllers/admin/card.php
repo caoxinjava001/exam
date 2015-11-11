@@ -64,12 +64,14 @@ class Card extends MY_Controller{
         $start_time=trim($this->input->get_post('start_time')); //开始时间
         $end_time=trim($this->input->get_post('end_time')); //结束时间
         if($start_time){
-            $this->where.= " and use_start_time like '%{$start_time}%'";
+            $s_time=str_replace('/','-',$start_time);
+            $this->where.= " and use_start_time >='{$s_time}'";
         }
         if($end_time){
-            $this->where.= " and use_end_time like '%{$end_time}%'";
+            $e_time=str_replace('/','-',$end_time);
+            $this->where.= " and use_end_time <= '{$e_time}'";
         }
-
+        echo $this->where;
         $res=$this->card_info_model->list_info('*',$this->where,$this->page,$this->perpage);
         foreach($res as $k=>$v){
             $temp=$this->admin_user_model->get_one('*',array('id'=>$v['admin_id']));

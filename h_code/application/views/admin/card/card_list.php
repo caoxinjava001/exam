@@ -38,12 +38,14 @@
                         </td>
 
                     </tr>
+                    <?php if($login_role==MANGER_ROLE_INFO){?>
                     <tr>
                         <td></td>
                         <td>
                             <a id="updateOrd" href="/card/create" class="btn btn-primary btn2"><i class="icon-font"></i>增加充值卡</a>
                         </td>
                     </tr>
+                    <?php }?>
                 </table>
             </form>
         </div>
@@ -61,7 +63,9 @@
                         <th>卡状态</th>
                         <th>使用人</th>
                         <th>使用时间</th>
+                        <?php if($login_role==MANGER_ROLE_INFO){?>
                         <th>操作</th>
+                        <?php }?>
                     </tr>
                     <?php foreach($data as $v){?>
                         <tr>
@@ -72,10 +76,12 @@
                             <td><?php echo $v['use_status']==1?'已使用':'未使用'?></td>
                             <td><?php echo $v['user_name']?></td>
                             <td><?php echo $v['use_start_time'],' --- ',$v['use_end_time']?></td>
+                            <?php if($login_role==MANGER_ROLE_INFO){?>
                             <td>
                                 <a class="audit" href="<?php MAIN_PATH;?>/card/edit?id=<?php echo $v['id'];?>" >修改</a>
 <!--                                <a class="dele_Agent" href="javascript:;" rel="--><?php //echo $v['id'];?><!--" >删除</a>-->
                             </td>
+                            <?php }?>
                         </tr>
                     <?php }?>
                 </table>
