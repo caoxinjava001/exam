@@ -71,7 +71,6 @@ class Card extends MY_Controller{
             $e_time=str_replace('/','-',$end_time);
             $this->where.= " and use_end_time <= '{$e_time}'";
         }
-        echo $this->where;
         $res=$this->card_info_model->list_info('*',$this->where,$this->page,$this->perpage);
         foreach($res as $k=>$v){
             $temp=$this->admin_user_model->get_one('*',array('id'=>$v['admin_id']));
