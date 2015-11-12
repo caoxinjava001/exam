@@ -1,0 +1,675 @@
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TH {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LEGEND {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TEXTAREA {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+SELECT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	FONT: 14px "simsun", "Arial Narrow", HELVETICA; BACKGROUND: #fff; -webkit-text-size-adjust: 100%
+}
+A {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+EM {
+	FONT-STYLE: normal
+}
+LI {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; VERTICAL-ALIGN: middle; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+P {
+	WORD-WRAP: break-word
+}
+.minNav {
+	LINE-HEIGHT: 30px; WIDTH: 100%; BACKGROUND: url(topN.png) repeat-x; HEIGHT: 30px
+}
+.minNav .navInner {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+.minNav SPAN.homeIco {
+	FLOAT: right; COLOR: #666
+}
+.minNav SPAN.homeIco A.index {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; BACKGROUND: url(/images/mokaoba/homeIco.png) no-repeat; PADDING-TOP: 2px
+}
+.minNav SPAN.login A {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 0px
+}
+.minNav A {
+	COLOR: #666
+}
+.minNav A:hover {
+	COLOR: #cc0000
+}
+.minNav SPAN.homeIco A.sina {
+	PADDING-LEFT: 25px; BACKGROUND: url(/images/mokaoba/sina.gif) no-repeat 0px -4px
+}
+.banner SPAN.spanBtn A {
+	BACKGROUND: url(/images/mokaoba/bg.png) no-repeat
+}
+.sjTitle SPAN {
+	BACKGROUND: url(/images/mokaoba/bg.png) no-repeat
+}
+.botton A {
+	BACKGROUND: url(/images/mokaoba/bg.png) no-repeat
+}
+.testbtn {
+	BACKGROUND: url(/images/mokaoba/bg.png) no-repeat
+}
+.ico1 {
+	BACKGROUND: url(/images/mokaoba/bg.png) no-repeat
+}
+.ico2 {
+	BACKGROUND: url(/images/mokaoba/bg.png) no-repeat
+}
+.banner SPAN.title {
+	BORDER-LEFT: #a4cec1 1px solid; MARGIN: 12px 0px 0px 10px; PADDING-LEFT: 8px; DISPLAY: inline; FONT: 30px "Microsoft YaHei"; FLOAT: left
+}
+.banner {
+	MARGIN: 10px auto; WIDTH: 960px; OVERFLOW: hidden
+}
+.banner SPAN {
+	FLOAT: right; OVERFLOW: hidden
+}
+.banner SPAN IMG {
+	BORDER-BOTTOM: #f1f1f1 1px solid; BORDER-LEFT: #f1f1f1 1px solid; MARGIN-TOP: 1px; BORDER-TOP: #f1f1f1 1px solid; BORDER-RIGHT: #f1f1f1 1px solid
+}
+.banner .logo {
+	FLOAT: left
+}
+.banner0 {
+	PADDING-BOTTOM: 10px; PADDING-TOP: 5px
+}
+.banner SPAN.spanBtn {
+	MARGIN-TOP: 7px; OVERFLOW: hidden
+}
+.banner SPAN.spanBtn A {
+	PADDING-LEFT: 20px; WIDTH: 100px; DISPLAY: inline; FONT: 18px/40px "Microsoft YaHei"; BACKGROUND-POSITION: 0px -104px; FLOAT: left; HEIGHT: 40px; COLOR: #000; MARGIN-LEFT: 6px
+}
+.banner0 {
+	MARGIN: 20px auto
+}
+.banner SPAN.spanBtn A:hover {
+	COLOR: #cc0000; TEXT-DECORATION: none
+}
+.bread {
+	LINE-HEIGHT: 40px; MARGIN: 0px auto; PADDING-LEFT: 10px; WIDTH: 950px; HEIGHT: 40px; FONT-SIZE: 14px
+}
+.bread A {
+	COLOR: #559b00
+}
+.mainContent {
+	BORDER-BOTTOM: #dfdfdf 1px solid; BORDER-LEFT: #dfdfdf 1px solid; MARGIN: 0px auto; WIDTH: 960px; OVERFLOW: hidden; BORDER-TOP: #dfdfdf 1px solid; BORDER-RIGHT: #dfdfdf 1px solid
+}
+.mainContent H2 {
+	MARGIN-BOTTOM: 10px; BACKGROUND: url(/images/mokaoba/bg.png) no-repeat 40px 10px
+}
+.mainContent H2.zyzg {
+	BACKGROUND-POSITION: 70px 10px
+}
+.mainContent H2.gwy {
+	BACKGROUND-POSITION: 54px 10px
+}
+.mainContent H2 SPAN {
+	FONT-FAMILY: "Microsoft YaHei"; FONT-SIZE: 16px; FONT-WEIGHT: normal
+}
+.mainContent .colum0 {
+	FLOAT: left
+}
+.mainContent .colum0 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 478px; PADDING-RIGHT: 0px; OVERFLOW: hidden; BORDER-RIGHT: #efefef 1px solid; PADDING-TOP: 0px
+}
+.colum1 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 478px; PADDING-RIGHT: 0px; OVERFLOW: hidden; BORDER-RIGHT: #efefef 1px solid; PADDING-TOP: 0px
+}
+.mainContent .colum0 A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; WHITE-SPACE: nowrap; COLOR: #000; FONT-SIZE: 14px; PADDING-TOP: 0px; _padding: 0px; _margin-right: 6px
+}
+.mainContent .colum0 A.hot {
+	POSITION: relative; DISPLAY: inline-block; COLOR: #0092d6; _padding: 0px
+}
+.mainContent .colum0 A.hot SPAN {
+	POSITION: absolute; TOP: -8px; RIGHT: -10px
+}
+.mainContent .colum0 A:hover {
+	COLOR: #cc0000
+}
+.mainContent .colum0 DIV {
+	BORDER-BOTTOM: #efefef 1px solid; PADDING-BOTTOM: 11px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; CURSOR: pointer; PADDING-TOP: 12px
+}
+.mainContent .colum0 DIV.border {
+	BORDER-LEFT: #fff 2px solid; BORDER-TOP: #fff 2px solid; BORDER-RIGHT: #fff 2px solid
+}
+.mainContent .colum0 DIV.wm {
+	BORDER-BOTTOM: #fff 1px solid
+}
+.mainContent .colum1 {
+	WIDTH: 481px; FLOAT: right; BORDER-RIGHT: medium none
+}
+.mainContent .colum1 DIV {
+	PADDING-LEFT: 10px
+}
+.mainContent .colum1 DIV.wy {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #fff 2px solid; WIDTH: 238px; FLOAT: left; HEIGHT: 120px; BORDER-TOP: #fff 2px solid; BORDER-RIGHT: #efefef 1px solid
+}
+.mainContent .colum1 DIV.fl {
+	BORDER-BOTTOM: #fff 2px solid; BORDER-LEFT: #fff 2px solid; WIDTH: 196px; FLOAT: right; HEIGHT: 120px; BORDER-TOP: #fff 2px solid; BORDER-RIGHT: #fff 2px solid
+}
+.mainContent .table {
+	MARGIN: 40px auto 0px; WIDTH: 520px
+}
+.mainContent TD {
+	BORDER-BOTTOM: #b2d982 1px solid; BORDER-LEFT: #b2d982 1px solid; LINE-HEIGHT: 30px; PADDING-LEFT: 10px; BORDER-TOP: #b2d982 1px solid; BORDER-RIGHT: #b2d982 1px solid
+}
+.mainContent TD.title {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: #f0ffdf; FONT-SIZE: 14px; FONT-WEIGHT: 800; PADDING-TOP: 0px
+}
+.mainContent TD.name {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+.mainContent TD.name STRONG {
+	COLOR: #ff6600
+}
+.mainContent .tips {
+	LINE-HEIGHT: 35px; PADDING-LEFT: 20px; HEIGHT: 35px; COLOR: #ff6600
+}
+.mainContent .botton {
+	TEXT-ALIGN: center; MARGIN: 10px auto 30px
+}
+.mainContent .botton A {
+	TEXT-ALIGN: center; MARGIN: 0px auto; WIDTH: 140px; DISPLAY: block; FONT: bold 16px/30px "simsun"; BACKGROUND-POSITION: 0px -162px; HEIGHT: 30px; COLOR: #417700
+}
+.mainContent .botton A:hover {
+	TEXT-DECORATION: none
+}
+.mainContent .m_left {
+	WIDTH: 660px; BACKGROUND: #fff; FLOAT: left; OVERFLOW: hidden
+}
+.mainContent .m_right {
+	WIDTH: 290px; FLOAT: right
+}
+.m_left .picinfo {
+	WIDTH: 270px; FLOAT: left
+}
+.m_left .testTitle {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: #b2d982 1px solid; LINE-HEIGHT: 40px; PADDING-LEFT: 15px; BACKGROUND: #f6fdee; HEIGHT: 40px; COLOR: #333; FONT-SIZE: 14px; BORDER-TOP: #b2d982 1px solid; BORDER-RIGHT: #b2d982 1px solid
+}
+.m_left .testInfo {
+	BORDER-BOTTOM: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; OVERFLOW: hidden; BORDER-TOP: medium none; BORDER-RIGHT: #e0e0e0 1px solid
+}
+.m_left .testInfo .shiju {
+	BACKGROUND: #fff; OVERFLOW: hidden
+}
+.m_left .testInfo TEXTAREA {
+	WIDTH: 600px; HEIGHT: 80px
+}
+.m_left .fontsinfo {
+	MARGIN: 10px 20px 0px 0px; WIDTH: 340px; FLOAT: right
+}
+.m_left .fontsinfo LI {
+	BORDER-BOTTOM: #dedfde 1px dotted; LINE-HEIGHT: 50px; HEIGHT: 50px; COLOR: #525552
+}
+.m_left .fontsinfo LI.noborder {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.m_right .hd {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: #b2d982 1px solid; LINE-HEIGHT: 40px; MARGIN: 0px; BACKGROUND: #f6fdee; HEIGHT: 40px; OVERFLOW: hidden; BORDER-TOP: #b2d982 1px solid; BORDER-RIGHT: #b2d982 1px solid
+}
+.m_right .hd H2 {
+	PADDING-LEFT: 10px; FONT-SIZE: 12px
+}
+.m_right .bd {
+	BORDER-BOTTOM: #dfdfdf 1px solid; BORDER-LEFT: #dfdfdf 1px solid; PADDING-BOTTOM: 12px; PADDING-LEFT: 0px; PADDING-RIGHT: 15px; BORDER-TOP: medium none; BORDER-RIGHT: #dfdfdf 1px solid; PADDING-TOP: 0px
+}
+.m_right .bd LI {
+	LINE-HEIGHT: 28px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; HEIGHT: 24px; OVERFLOW: hidden
+}
+.m_right .bd LI A {
+	COLOR: #333; FONT-SIZE: 12px
+}
+.testbtn {
+	MARGIN-TOP: 6px; TEXT-INDENT: -10000px; WIDTH: 223px; DISPLAY: block; BACKGROUND-POSITION: 0px -210px; HEIGHT: 44px
+}
+.testbtn0 {
+	MARGIN: 20px auto 10px
+}
+.testInfo .read {
+	PADDING-BOTTOM: 0px; MARGIN: 20px 0px 0px; PADDING-LEFT: 25px; PADDING-RIGHT: 25px; DISPLAY: block; COLOR: #333; CLEAR: both; PADDING-TOP: 0px
+}
+.testInfo .notice {
+	PADDING-BOTTOM: 0px; MARGIN: 20px 0px 0px; PADDING-LEFT: 25px; PADDING-RIGHT: 25px; DISPLAY: block; COLOR: #333; CLEAR: both; PADDING-TOP: 0px
+}
+.testInfo LI {
+	LINE-HEIGHT: 24px; HEIGHT: 24px; COLOR: #636563
+}
+.testInfo .ico1 {
+	PADDING-LEFT: 20px; BACKGROUND-POSITION: 0px -268px
+}
+.testInfo .ico2 {
+	PADDING-LEFT: 20px; BACKGROUND-POSITION: 0px -297px
+}
+.veiw {
+	PADDING-BOTTOM: 15px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 15px
+}
+.veiw .testtitle {
+	BORDER-BOTTOM: #efefef 1px solid; BORDER-LEFT: #efefef 1px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 26px; MARGIN: 0px 18px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #f7f7f7; FONT-SIZE: 14px; BORDER-TOP: #efefef 1px solid; BORDER-RIGHT: #efefef 1px solid; PADDING-TOP: 10px
+}
+.veiw .test1 {
+	BORDER-BOTTOM: #adaaad 1px dotted; BORDER-LEFT: #adaaad 1px dotted; MARGIN: 10px auto 0px; WIDTH: 622px; OVERFLOW: hidden; BORDER-TOP: #adaaad 1px dotted; BORDER-RIGHT: #adaaad 1px dotted
+}
+.veiw .num1 {
+	BORDER-BOTTOM: #adaaad 1px dotted; LINE-HEIGHT: 35px; MARGIN: 0px 10px; HEIGHT: 35px
+}
+.veiw .num1 STRONG {
+	COLOR: red
+}
+.veiw .in P {
+	LINE-HEIGHT: 30px; PADDING-LEFT: 15px
+}
+.veiw .reslut {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; MARGIN-TOP: 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #dedfde; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+.veiw .reslut INPUT {
+	VERTICAL-ALIGN: middle; MARGIN-RIGHT: 30px
+}
+.veiw .ico2 {
+	LINE-HEIGHT: 30px; MARGIN: 0px 26px; HEIGHT: 30px
+}
+.veiw .in {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 22px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 0px
+}
+.veiw PRE {
+	LINE-HEIGHT: 22px; WORD-WRAP: break-word
+}
+.e_juan02 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 22px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 0px
+}
+.signDefault {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 22px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 0px
+}
+.pl .plc {
+	BORDER-BOTTOM: #efefef 1px solid; BORDER-LEFT: #efefef 1px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 26px; MARGIN: 0px 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #f7f7f7; COLOR: #333; FONT-SIZE: 14px; BORDER-TOP: #efefef 1px solid; BORDER-RIGHT: #efefef 1px solid; PADDING-TOP: 10px
+}
+.signDefault {
+	PADDING-BOTTOM: 10px; MARGIN: 10px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #dedfde; PADDING-TOP: 10px
+}
+.signDefault TEXTAREA {
+	WIDTH: 100%
+}
+.mainList {
+	WIDTH: 960px; FLOAT: left
+}
+.mainList .nav {
+	BORDER-BOTTOM: #5c8e02 2px solid; BORDER-LEFT: #b2d982 1px solid; LINE-HEIGHT: 46px; HEIGHT: 46px; BORDER-TOP: #b2d982 1px solid; BORDER-RIGHT: #b2d982 1px solid
+}
+.mainList .nav A {
+	TEXT-ALIGN: center; FLOAT: left; COLOR: #417700; FONT-SIZE: 14px
+}
+.mainList .nav A STRONG {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; PADDING-TOP: 4px
+}
+.mainList .nav A:hover {
+	BACKGROUND: #dcf2c2; TEXT-DECORATION: none
+}
+.mainList .nav A.on {
+	BACKGROUND: url(nav_bg.png) repeat-x; COLOR: #fff
+}
+.area {
+	BORDER-BOTTOM: #6ba700 1px solid; BORDER-LEFT: #6ba700 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; OVERFLOW: hidden; BORDER-TOP: medium none; BORDER-RIGHT: #6ba700 1px solid; PADDING-TOP: 0px
+}
+.area A {
+	PADDING-BOTTOM: 0px; MARGIN: 3px 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; DISPLAY: inline-block; WHITE-SPACE: nowrap; COLOR: #444; PADDING-TOP: 0px
+}
+.area A:hover {
+	BACKGROUND: #5daa00; COLOR: #fff; TEXT-DECORATION: none
+}
+.area A.on {
+	BACKGROUND: #5daa00; COLOR: #fff
+}
+.area .hy {
+	LINE-HEIGHT: 24px; PADDING-TOP: 10px
+}
+.area .hy SPAN {
+	MARGIN-RIGHT: 15px
+}
+.areaCity {
+	MARGIN-TOP: 10px; FLOAT: left; MARGIN-LEFT: 0px; OVERFLOW: hidden; BORDER-TOP: #b2d982 1px solid
+}
+.areaCity STRONG {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 12px; MARGIN-TOP: 3px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; COLOR: #417700; PADDING-TOP: 5px
+}
+.areaCity A {
+	LINE-HEIGHT: 12px; MARGIN: 3px 5px; DISPLAY: inline; WHITE-SPACE: nowrap; FLOAT: left
+}
+.sjTitle {
+	BORDER-BOTTOM: #b2d982 1px solid; BORDER-LEFT: #b2d982 1px solid; LINE-HEIGHT: 36px; PADDING-LEFT: 20px; BACKGROUND: url(/images/mokaoba/nav2.png) repeat-x; HEIGHT: 36px; OVERFLOW: hidden; BORDER-TOP: medium none; BORDER-RIGHT: #b2d982 1px solid
+}
+.sjTitle .cs {
+	PADDING-RIGHT: 5px; FLOAT: right
+}
+.sjTitle SPAN {
+	PADDING-RIGHT: 15px; BACKGROUND-POSITION: 58px -23px; MARGIN-LEFT: 15px
+}
+.sjList {
+	BORDER-BOTTOM: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: medium none; BORDER-RIGHT: #e0e0e0 1px solid; PADDING-TOP: 10px
+}
+.sjList LI {
+	BORDER-BOTTOM: #e6e6e6 1px dashed; LINE-HEIGHT: 35px; MARGIN-TOP: 8px; COLOR: #999; FONT-SIZE: 14px; OVERFLOW: hidden
+}
+.sjList LI DIV.newtitle {
+	LINE-HEIGHT: 35px; WIDTH: 760px; HEIGHT: 35px; OVERFLOW: hidden
+}
+.sjList LI A {
+	FLOAT: left; COLOR: #999
+}
+.sjList LI A:hover {
+	COLOR: #000
+}
+.sjList LI SPAN {
+	FLOAT: left
+}
+.sjList LI EM {
+	DISPLAY: inline; FLOAT: right; MARGIN-RIGHT: 5px
+}
+.sjList LI DIV {
+	FLOAT: left; OVERFLOW: hidden
+}
+.sjList LI DIV.info {
+	LINE-HEIGHT: 16px; FONT-SIZE: 12px
+}
+.sjList LI DIV.info SPAN {
+	DISPLAY: inline; MARGIN-LEFT: 80px
+}
+.sjList LI DIV.info SPAN.xd {
+	FLOAT: right; MARGIN-LEFT: 0px; MARGIN-RIGHT: 100px
+}
+.sjList LI DIV.info SPAN.xd A {
+	COLOR: #000
+}
+.sjList .mTitle {
+	DISPLAY: inline; FLOAT: none; HEIGHT: 35px; COLOR: #549a00; MARGIN-LEFT: 10px; OVERFLOW: hidden
+}
+.sjList .time {
+	TEXT-ALIGN: center; WIDTH: 80px; DISPLAY: block
+}
+.sjList .time SPAN {
+	WIDTH: 100%; DISPLAY: block
+}
+.sjList .mKemu {
+	overfloat: hidden
+}
+.sjList .jiexi {
+	TEXT-ALIGN: center; WIDTH: 60px
+}
+.sjList .jiexi SPAN {
+	WIDTH: 100%; DISPLAY: block
+}
+.sliderRight {
+	WIDTH: 230px; FLOAT: right
+}
+.page {
+	TEXT-ALIGN: center; LINE-HEIGHT: 30px; MARGIN-TOP: 10px; HEIGHT: 30px
+}
+.page A {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #549a00; PADDING-TOP: 2px
+}
+.page A.on {
+	BACKGROUND: #5daa00; COLOR: #fff
+}
+.page A:hover {
+	BACKGROUND: #5daa00; COLOR: #fff; TEXT-DECORATION: none
+}
+.b1 {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px
+}
+.m2 {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px
+}
+.m1 {
+	BORDER-TOP: #79c320 2px solid
+}
+.m2 {
+	WIDTH: 960px
+}
+.m3 {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px
+}
+.lc {
+	BORDER-BOTTOM: #dfdfdf 1px solid; BORDER-LEFT: #dfdfdf 1px solid; LINE-HEIGHT: 42px; MARGIN: 10px auto 0px; PADDING-LEFT: 150px; WIDTH: 810px; BACKGROUND: url(tips.png) no-repeat; HEIGHT: 42px; BORDER-TOP: #dfdfdf 1px solid; BORDER-RIGHT: #dfdfdf 1px solid
+}
+.lc DIV {
+	COLOR: #417700; FONT-SIZE: 14px; FONT-WEIGHT: 800
+}
+.lc DIV SPAN {
+	PADDING-LEFT: 30px
+}
+.lc DIV SPAN.n1 {
+	PADDING-LEFT: 41px
+}
+.lc DIV SPAN.n6 {
+	PADDING-LEFT: 58px
+}
+.lc DIV SPAN.n7 {
+	PADDING-LEFT: 58px
+}
+.lc DIV SPAN.n2 {
+	PADDING-LEFT: 50px
+}
+.lc DIV SPAN.n3 {
+	PADDING-LEFT: 52px
+}
+.lc DIV SPAN.n4 {
+	PADDING-LEFT: 55px
+}
+.lc DIV SPAN.n5 {
+	PADDING-LEFT: 50px
+}
+.footer {
+	TEXT-ALIGN: center; MARGIN-TOP: 15px
+}
+.footer A {
+	COLOR: #666
+}
+.footer P {
+	LINE-HEIGHT: 30px; COLOR: #666
+}
+.helpTitle {
+	LINE-HEIGHT: 50px; HEIGHT: 50px; OVERFLOW: hidden
+}
+.helpTitle LI {
+	FLOAT: left
+}
+.helpTitle LI A {
+	TEXT-ALIGN: center; LINE-HEIGHT: 39px; WIDTH: 158px; DISPLAY: block; FONT-FAMILY: "Microsoft YaHei"; BACKGROUND: url(/images/mokaoba/hoverbg2.png) no-repeat; HEIGHT: 39px; COLOR: #000; FONT-SIZE: 16px; MARGIN-RIGHT: 2px
+}
+.helpTitle LI.on A {
+	WIDTH: 160px; BACKGROUND: url(/images/mokaoba/hoverbg1.png) no-repeat; HEIGHT: 50px; COLOR: #fff; MARGIN-RIGHT: 2px
+}
+.helpTitle LI.last A {
+	MARGIN-RIGHT: 0px
+}
+.banner1 {
+	BORDER-BOTTOM: medium none
+}
+.mainhelp {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.askList {
+	PADDING-BOTTOM: 20px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; OVERFLOW: hidden; PADDING-TOP: 20px
+}
+.askList .list1 {
+	WIDTH: 430px; PADDING-RIGHT: 30px; FLOAT: left
+}
+.askList .list1 .picli {
+	LINE-HEIGHT: 24px; MARGIN-BOTTOM: 10px; HEIGHT: 75px
+}
+.askList .list1 .picli .pica {
+	FLOAT: left; MARGIN-RIGHT: 10px
+}
+.askList .list1 .picli H2 {
+	LINE-HEIGHT: 30px; PADDING-LEFT: 10px; MARGIN-BOTTOM: 5px; BACKGROUND: none transparent scroll repeat 0% 0%; FONT-SIZE: 14px
+}
+.askList .list1 .picli H2 A {
+	COLOR: #00559c
+}
+.askList .list1 LI {
+	LINE-HEIGHT: 38px
+}
+.askList .list1 LI A {
+	COLOR: #333; FONT-SIZE: 14px
+}
+.askList .list1 LI A:hover {
+	COLOR: #cc0000
+}
+.askList .list1 .rightfonts {
+	WIDTH: 280px; FLOAT: right; COLOR: #8c8e8c
+}
+.askList .list2 {
+	MARGIN-RIGHT: 90px
+}
+.askList H3 {
+	LINE-HEIGHT: 30px; PADDING-LEFT: 28px; HEIGHT: 30px; COLOR: #00559c; FONT-SIZE: 14px
+}
+.askList P.contents {
+	LINE-HEIGHT: 26px; MARGIN-TOP: 10px; TEXT-INDENT: 1.5em
+}
+.askList H2 {
+	PADDING-LEFT: 46px; FONT: 20px/50px "simhei"; COLOR: #00559c
+}
+.class404 {
+	MARGIN: 100px auto; WIDTH: 644px; BACKGROUND: url(/images/mokaoba/404.png); HEIGHT: 274px; OVERFLOW: hidden
+}
+.class404 P {
+	TEXT-ALIGN: center; LINE-HEIGHT: 30px; MARGIN-TOP: 180px; FONT-SIZE: 14px; FONT-WEIGHT: 800
+}
+.askList DIV.table {
+	MARGIN: 0px auto; WIDTH: 90%
+}
+.askList DIV.table TABLE {
+	WIDTH: 90%
+}
+.askList DIV.table TABLE TD {
+	LINE-HEIGHT: 45px; PADDING-LEFT: 10px; HEIGHT: 45px
+}
+.askList DIV.table TABLE TD STRONG {
+	COLOR: #a25c00
+}
+.askList P.zh {
+	LINE-HEIGHT: 30px; PADDING-LEFT: 46px
+}
+.askList .inf P {
+	FONT: 14px/30px "simsun"
+}
+.askList .inf P IMG {
+	MARGIN: 0px 3px; VERTICAL-ALIGN: middle
+}
+.askList .notice {
+	TEXT-ALIGN: center; LINE-HEIGHT: 40px; MARGIN-TOP: 15px; FONT-FAMILY: "simhei"; BACKGROUND: #cc0000; HEIGHT: 40px; COLOR: #fff; FONT-SIZE: 14px
+}
+.askList .kslc IMG {
+	MARGIN: 0px auto 20px 40px; WIDTH: 738px
+}
+.askList .kslc P {
+	LINE-HEIGHT: 40px; TEXT-INDENT: 2em; COLOR: #333; FONT-SIZE: 14px
+}
+.askList .kslc P STRONG {
+	FONT-SIZE: 14px
+}
+.ListenPlay {
+	MARGIN-TOP: 3px; WIDTH: 126px; BACKGROUND: url(/images/ListenPlay.gif) no-repeat; FLOAT: left; HEIGHT: 24px; MARGIN-LEFT: 13px; CURSOR: pointer
+}
+.fav {
+	BACKGROUND-COLOR: #fff; HEIGHT: 100px
+}
+.bd {
+	BORDER-BOTTOM: #b2d982 1px solid; BORDER-LEFT: #b2d982 1px solid; BACKGROUND: #ffffff; BORDER-TOP: #b2d982 1px solid; BORDER-RIGHT: #b2d982 1px solid
+}
+.fav H5 {
+	LINE-HEIGHT: 16px; MARGIN-TOP: 20px; HEIGHT: 16px; COLOR: #999; MARGIN-LEFT: 13px; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+.fav .share {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 13px
+}
+.tacw {
+	BORDER-BOTTOM: rgb(204,51,0) 1px solid; BORDER-LEFT: rgb(204,51,0) 1px solid; PADDING-BOTTOM: 4px; MARGIN: 10px 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND: rgb(255,226,219) 0px 0px; COLOR: rgb(204,51,0); BORDER-TOP: rgb(204,51,0) 1px solid; BORDER-RIGHT: rgb(204,51,0) 1px solid; PADDING-TOP: 4px; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial
+}
+.dzjs {
+	BORDER-BOTTOM: rgb(255,102,0) 1px dashed; BORDER-LEFT: rgb(255,102,0) 1px dashed; PADDING-BOTTOM: 3px; MARGIN: 10px 4px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BORDER-TOP: rgb(255,102,0) 1px dashed; BORDER-RIGHT: rgb(255,102,0) 1px dashed; PADDING-TOP: 3px; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial
+}
+.bdsharelike {
+	MARGIN: 1em 0px; CLEAR: both
+}
+.bdsharelike .bdlikebutton {
+	MARGIN: 0px auto
+}
+.paper_btn {
+	WIDTH: 98px; FLOAT: right
+}
+.paper_btn .download_btn {
+	LINE-HEIGHT: 27px; PADDING-LEFT: 30px; WIDTH: 62px; DISPLAY: inline-block; BACKGROUND: url(/images/paperks/dlbtn_1.png) no-repeat center top; HEIGHT: 27px; COLOR: #000; FONT-SIZE: 14px
+}
+.paper_btn .exam_btn {
+	TEXT-ALIGN: center; LINE-HEIGHT: 27px; WIDTH: 92px; DISPLAY: inline-block; BACKGROUND: url(btn92x27_b.png) no-repeat 0px 0px; HEIGHT: 27px; COLOR: #fff; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.paper_btn .exam_btn:hover {
+	BACKGROUND: url(btn92x27_a.png) no-repeat 0px 0px; TEXT-DECORATION: none
+}

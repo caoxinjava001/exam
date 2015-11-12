@@ -82,6 +82,7 @@ $route['enterprise_sort/(:any)'] = "admin/enterprise_sort/$1"; //企业信息分
 $route['manage/(:any)'] = "admin/manage/$1";
 $route['classify/(:any)'] = "admin/classify/$1";
 $route['object/(:any)'] = "admin/object/$1";
+$route['examination/(:any)'] = "front/examination/$1";
 
 
 $route['mycop/(:any)']="admin/mycop/$1";

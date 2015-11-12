@@ -83,6 +83,11 @@ define('PIC_TYPE_VAL',"*.gif;*.gif;*.jpeg;*.jpg;*.png"); // 允许上传的图�
 define('MANGER_ROLE_INFO',	1);//管理员
 define('THIRD_ROLE_INFO',		2);//代理商
 
+/******* 题型 ************/
+define('EXAM_SINGLE',1);//单选
+define('EXAM_JUDGE',2);//判断
+define('EXAM_MORE',3);//多选
+
 
 
 

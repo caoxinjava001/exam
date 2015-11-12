@@ -1,0 +1,126 @@
+.cjdan {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; MARGIN: 10px 191px 10px 190px; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.cj_l2 {
+	WIDTH: 275px; FLOAT: left
+}
+.cjline2 {
+	WIDTH: 15px; FLOAT: left
+}
+.cj_r2 {
+	WIDTH: 251px; FLOAT: right
+}
+.cjname2 {
+	PADDING-LEFT: 20px; COLOR: #333435; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.cjfenshu2 {
+	TEXT-ALIGN: center; COLOR: #595959; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.cjdetail2 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 37px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.fs2 {
+	FONT-FAMILY: "Î¢ÈíÑÅºÚ"; COLOR: #ff0202; FONT-SIZE: 50px; FONT-WEIGHT: normal
+}
+.cjdetail2 LI {
+	LINE-HEIGHT: 30px; FONT-SIZE: 14px
+}
+.cjdetail2 LI STRONG {
+	COLOR: #28292a
+}
+.orange {
+	COLOR: #e93700; FONT-WEIGHT: bold
+}
+.analysis_r {
+	PADDING-BOTTOM: 5px; PADDING-RIGHT: 3px; FLOAT: right
+}
+.analysis_r IMG {
+	MARGIN-LEFT: 2px
+}
+.analysis_l {
+	TEXT-ALIGN: center; LINE-HEIGHT: 30px; WIDTH: 96px; FONT-FAMILY: "Î¢ÈíÑÅºÚ"; BACKGROUND: url(analysis.png) no-repeat; FLOAT: left; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 14px
+}
+.youranswer {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(analybg.png) no-repeat; PADDING-TOP: 31px
+}
+.youranswer_nei {
+	BORDER-LEFT: #aed3f2 1px solid; BACKGROUND: url(/images/paperks/noupdate/analybg2.png) repeat-x
+}
+.gou {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 23px; WIDTH: 44px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 10px
+}
+.ana_txt {
+	LINE-HEIGHT: 26px; WIDTH: 210px; FLOAT: left; COLOR: #0d5073; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.ana_txt2 {
+	LINE-HEIGHT: 26px; WIDTH: 166px; FLOAT: left; COLOR: #666
+}
+.ask {
+	FLOAT: right
+}
+.kongbai {
+	BORDER-LEFT: #aed3f2 1px solid; HEIGHT: 20px; CLEAR: both; MARGIN-RIGHT: 3px; BORDER-RIGHT: #aed3f2 1px solid
+}
+.dajx {
+	BORDER-BOTTOM: #aed3f2 1px solid; BORDER-LEFT: #aed3f2 1px solid; PADDING-BOTTOM: 15px; BACKGROUND: url(/images/paperks/noupdate/dajxbg.png) #f1faff no-repeat; CLEAR: both; MARGIN-RIGHT: 3px; BORDER-RIGHT: #aed3f2 1px solid; PADDING-TOP: 18px
+}
+.dajx_l {
+	PADDING-LEFT: 37px; WIDTH: 73px; FLOAT: left; COLOR: #3e598a; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+.dajx_r {
+	LINE-HEIGHT: 24px; WIDTH: 782px; FLOAT: right; COLOR: #3e598a; FONT-SIZE: 14px
+}
+.cha {
+	FONT-FAMILY: "Î¢ÈíÑÅºÚ"
+}
+.youranswer_nei2 {
+	BORDER-LEFT: #aed3f2 1px solid; BACKGROUND: url(/images/paperks/noupdate/analybg2.png) repeat-x; MARGIN-RIGHT: 3px; BORDER-RIGHT: #aed3f2 1px solid
+}
+.ana_txt3 {
+	PADDING-LEFT: 16px; WIDTH: 610px; FLOAT: left; COLOR: #0d5073; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.ana_txt3 .yourtext {
+	PADDING-BOTTOM: 6px; LINE-HEIGHT: 21px; PADDING-LEFT: 4px; PADDING-RIGHT: 0px; COLOR: #666; FONT-SIZE: 12px; FONT-WEIGHT: normal; PADDING-TOP: 6px
+}
+.ask2 {
+	FLOAT: right; MARGIN-RIGHT: -4px; _position: relative; _margin-right: -4px
+}
+.tk {
+	BORDER-BOTTOM: #aed3f2 1px solid; BORDER-LEFT: #aed3f2 1px solid; PADDING-BOTTOM: 15px; PADDING-LEFT: 20px; PADDING-RIGHT: 16px; BACKGROUND: url(/images/paperks/noupdate/dajxbg.png) #f1faff no-repeat; CLEAR: both; MARGIN-RIGHT: 3px; BORDER-RIGHT: #aed3f2 1px solid; PADDING-TOP: 23px
+}
+.tk_dajx {
+	PADDING-BOTTOM: 8px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #3e598a; FONT-SIZE: 14px; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.tk2_dajx {
+	LINE-HEIGHT: 24px; COLOR: #3e598a; FONT-SIZE: 14px
+}
+.ana_txt4 {
+	LINE-HEIGHT: 26px; WIDTH: 210px; FLOAT: left; COLOR: #0d5073; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.double {
+	PADDING-LEFT: 106px
+}
+.ana_txt4 SPAN.correct {
+	PADDING-TOP: 10px
+}
+.sjtxtcss {
+	BORDER-BOTTOM: #9498a3 1px solid; BORDER-LEFT: #9498a3 1px solid; LINE-HEIGHT: 19px; WIDTH: 65px; HEIGHT: 19px; BORDER-TOP: #9498a3 1px solid; BORDER-RIGHT: #9498a3 1px solid
+}
+.fen {
+	FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+.bentifs {
+	FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+.explain TABLE TD {
+	LINE-HEIGHT: 150%; FONT-SIZE: 14px
+}
+.explain .titlestyle {
+	BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; TEXT-INDENT: 1em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 28px; COLOR: #666; FONT-SIZE: 14px; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.redRQinfo {
+	COLOR: blue; CURSOR: pointer
+}
+.test_view_xt_r {
+	COLOR: red; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
