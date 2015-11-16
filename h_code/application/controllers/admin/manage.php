@@ -57,6 +57,7 @@ class Manage extends MY_Controller{
         $data['select_id']=$select_id;
         $data['s_name']=$s_name;
         $data['login_role']=$this->login_role;
+        $data['member_id']=$this->member_id;
         $data['pages']=pages($this->admin_user_model->getCount($this->where),$this->page,$this->perpage);
 
         $this->rendering_admin_template($data,'manage','man_list');
@@ -243,12 +244,22 @@ class Manage extends MY_Controller{
             );
             exit(json_encode($info));
         }
+
+
+        $id=$this->input->get_post('id')?$this->input->get_post('id'):0;
+
+        if($this->member_id==$id){
+            $info = array(
+                'status' => 0,
+                'msg' => '无权限操作！',
+            );
+            exit(json_encode($info));
+        }
+
         $info = array(
             'status' => 0,
             'msg' => '删除失败',
         );
-
-        $id=$this->input->get_post('id')?$this->input->get_post('id'):0;
 
         if(!$id){
             exit(json_encode($info));
