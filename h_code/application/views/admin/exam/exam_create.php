@@ -5,8 +5,12 @@
 <link href="<?php echo STATICS_PATH;?>/css/b_reg.css" type="text/css" rel="stylesheet"/>
 <script type="text/javascript" src="<?php echo STATICS_PATH;?>/js/ui/jquery-ui.custom.min.js"></script>
 <script type="text/javascript" src="<?php echo STATICS_PATH ?>/js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS ?>/jhh-common.js"></script>
 
-
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS;?>/jq_min.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS;?>/ht-hd.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS;?>/ht-effect.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS;?>/jhh_tag_tree.js"></script>
 
 <div class="xu" id="xu">
     <div class="cont_left">
@@ -57,34 +61,54 @@
 
 <form id="form_sub">
     <input type="hidden" name="id" id="id"/>
-    <div class="pic_box close_box" style="display:none;left: 50%;margin-left: -325px;margin-top: -100px;position:fixed;top: 20%;z-index: 100;width:650px;height:400px; background-color:#fff;border:1px solid #000;">
+    <div class="pic_box close_box" style="display:none;left: 50%;margin-left: -325px;margin-top: -100px;position:fixed;top: 15%;z-index: 100;width:650px;height:750px; background-color:#fff;border:1px solid #000;">
         <div class="close_pic_box" style="float: right;margin:5px 10px 0 0;color:red;font-size:20px;cursor: pointer;">X</div>
         <div style="margin:20px 0 0 20px;">
 
             <div style="margin:20px 0 0 0;">题型:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<select name="q_type" id="q_type_id">
-					<option value="">单选题</option>
+				<select name="q_type" id="q_type_id" onchange="getQuestion(this.value);return false;">
+					<option value="0">请选择</option>
+					<option value="<?php  echo EXAM_SINGLE;?>">单选题</option>
+					<option value="<?php  echo EXAM_JUDGE;?>">判断题</option>
+					<option value="<?php  echo EXAM_MORE;?>">多选题</option>
 				</select>
 			</div>
         </div>
-        <div style="margin:10px 0 0 20px;">审核操作：
-            <select name="pro_type">
-                <option value="1">审核通过</option>
-                <option value="2">驳回</option>
-            </select>
-        </div>
-        <div style="margin:25px 0 0 20px;">附言：</div>
-        <textarea name="pro_tip" id="pro_tip" cols="60" rows="5" style="margin:10px 0 0 20px;"></textarea>
-		<script>
-		var t_name='pro_tip';
-CKEDITOR.instances[t_name]&&CKEDITOR.instances[t_name].destroy();
-		</script>
-
-        <a class="end" href="javascript:void(0)" style="margin:10px 0 0 100px;">完成</a>
+        <div style="margin:10px 0 0 20px;" id="show_question_id" class='new_st'>
+		</div>
     </div>
 </form>
 <script>
+
+function getQuestion(q_type_id) {
+	var q_type_id = q_type_id;
+	if (q_type_id == 0 || q_type_id == '') {
+		_msg='请选择题型';
+		_show_msg(_msg, 2000);
+		return false;
+	}
+	var url = '/exam/getQuestioninfoTpl';
+	 $.post(
+			 url,
+			 {
+			 q_type_id:q_type_id
+			 },
+			 function(data) {
+				 if (data["status"] == 1) {
+					$("#show_question_id").html(data["data"]);
+					//window.location.href='/manage/index';//登录成功后的默认页面.
+				 } else {
+					//_show_msg(message_info,2500);
+					_show_msg(data['data'],2500); //_show_msg(data['data']['id'],2500);
+				 }
+				 return false;
+			 },
+			 "json"
+		  );
+	 return false;
+}
 function add_update_show() {
+	
 	$('.pic_box').show();
 }
 
