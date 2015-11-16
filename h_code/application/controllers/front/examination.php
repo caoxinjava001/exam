@@ -62,8 +62,7 @@ class Examination extends MY_Controller{
      */
     public function result(){
         $data=array();
-        $uid =$this->user_id;
-        $eid =$this->input->get_post('eid')?$this->input->get_post('eid'):1;
+        $eid =$this->input->get_post('eid')?$this->input->get_post('eid'):0;
         $where['user_id']=$this->user_id;
         $where['exam_id']=$eid;
         $where['dele_status']=NO_DELETE_STATUS;
