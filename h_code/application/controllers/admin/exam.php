@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Exam 
+ * 
+ * @uses MY
+ * @uses _Controller
+ * @package 
+ * @version $Id$
+ * @author jackcao <caoxin@159jh.com> 
+ */
 class Exam extends MY_Controller{
     private $where; //where条件
     private $perpage=10; //每页条数
@@ -52,14 +61,48 @@ class Exam extends MY_Controller{
     }
 
     /**
-     * 创建代理商信息
+     * 创建信息
      */
     public function create(){
         $data=array();
         $where['dele_status']=NO_DELETE_STATUS;
-        $data['admin_users']=$this->admin_user_model->select('id,user_name',$where);
-        $this->rendering_admin_template($data,'card','card_create');
+        //$data['admin_users']=$this->admin_user_model->select('id,user_name',$where);
+        $this->rendering_admin_template($data,'exam','exam_create');
     }
+
+	public function getQuestioninfoTpl() {
+		$ret['status'] = 0;
+		$ret['msg'] = '非法数据';
+		$question_type = empty($_REQUEST['q_type_id'])?0:intval($_REQUEST['q_type_id']);//题型id
+		if(empty($question_type)){
+			echo  json_encode($ret);
+			exit;
+		}
+		switch($question_type) {
+			case EXAM_SINGLE:
+				$result = 'admin/exam/single_exam';
+				break;
+			case EXAM_JUDGE:
+				break;
+			case EXAM_MORE:
+				break;
+		}
+		//$result = $this ->getTemplateByType($question_type);
+		$content = $this->load->view($result,array(),true);
+		//var_dump($content);exit;
+		if($content){
+			$ret['status'] = 1;
+			$ret['msg'] = '有效数据';
+			$ret['data'] = $content;
+			echo  json_encode($ret);
+			exit;
+		}else{
+			$ret['status'] = -1;
+			$ret['msg'] = '非法数据.';
+			echo  json_encode($ret);
+			exit;
+		}
+	}
 
     /**
      * 修改代理商信息
