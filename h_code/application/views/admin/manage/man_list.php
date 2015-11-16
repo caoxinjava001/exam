@@ -35,13 +35,16 @@
     </div>
     <div class="result-wrap">
         <form name="myform" id="myform" method="post">
-            <?php if($login_role==MANGER_ROLE_INFO){?>
+            <?php /* if($login_role==MANGER_ROLE_INFO){?>
             <a id="dele_select_agents" class="btn btn-primary btn2" href="javascript:;" >批量删除</a>
-            <?php }?>
+            <?php } */?>
             <div class="result-content">
                 <table class="result-tab" width="100%">
                     <tr>
+                        <?php /*?>
                         <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+                        <?php */?>
+
                         <th>ID</th>
                         <th>名称</th>
                         <th>地区</th>
@@ -51,7 +54,10 @@
                     </tr>
                     <?php foreach($data as $v){?>
                         <tr>
+                            <?php /*?>
                             <td class="tc"><input name="ids"  type="checkbox" rel="<?php echo $v['id'];?>"></td>
+                            <?php */?>
+
                             <td><?php echo $v['id']?></td>
                             <td><?php echo $v['user_name']?></td>
                             <td><?php echo $v['zone']?></td>
@@ -59,7 +65,7 @@
                             <td><?php echo $v['up_date']?></td>
                             <td>
                                 <a class="audit" href="<?php MAIN_PATH;?>/manage/edit?id=<?php echo $v['id'];?>" >修改</a>
-                                <?php if($login_role==MANGER_ROLE_INFO){?>
+                                <?php if($login_role==MANGER_ROLE_INFO&&$member_id!=$v['id']){?>
                                 <a class="dele_Agent" href="javascript:;" rel="<?php echo $v['id'];?>" >删除</a>
                                 <?php }?>
                             </td>

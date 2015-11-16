@@ -26,29 +26,65 @@ class Examination extends MY_Controller{
         $where['dele_status']=NO_DELETE_STATUS;
         $where['exam_id']=$id;
 
-        //单选
-        $where['stem_cate_id']=EXAM_SINGLE;
-        $data['single']=$this->turnTo($this->exam_stem_model->select('*', $where));
+        $where_e['dele_status']=NO_DELETE_STATUS;
+        $where_e['status']=0;
+        $where_e['id']=$id;
+        $exam=$this->exam_model->get_one('exam_name',$where_e);
 
-        //判断
-        $where['stem_cate_id']=EXAM_JUDGE;
-        $data['judge']=$this->turnTo($this->exam_stem_model->select('*', $where));
+        if(!empty($exam)) {
+            //单选
+            $where['stem_cate_id'] = EXAM_SINGLE;
+            $data['single'] = $this->turnTo($this->exam_stem_model->select('*', $where));
 
-        //多选
-        $where['stem_cate_id']=EXAM_MORE;
-        $data['more']=$this->turnTo($this->exam_stem_model->select('*', $where));
+            //判断
+            $where['stem_cate_id'] = EXAM_JUDGE;
+            $data['judge'] = $this->turnTo($this->exam_stem_model->select('*', $where));
 
-        $data['e_id']=$id;
-//        var_dump($data['single']);die;
+            //多选
+            $where['stem_cate_id'] = EXAM_MORE;
+            $data['more'] = $this->turnTo($this->exam_stem_model->select('*', $where));
+
+
+            $data['e_id'] = $id;
+            $data['exam_name'] = $exam['exam_name'];
+        }
+
         $this->load->view('/front/shiti',$data);	// 导入 主体部分 视图模板
     }
 
+    /**
+     * 考试结果
+     */
     public function result(){
         $data=array();
-        $uid =$this->input->get_post('uid')?$this->input->get_post('uid'):0;
-        $eid =$this->input->get_post('eid')?$this->input->get_post('eid'):0;
+        $uid =$this->input->get_post('uid')?$this->input->get_post('uid'):1;
+        $eid =$this->input->get_post('eid')?$this->input->get_post('eid'):1;
+        $where['user_id']=$uid;
+        $where['exam_id']=$eid;
+        $where['dele_status']=NO_DELETE_STATUS;
 
+        $where_e['dele_status']=NO_DELETE_STATUS;
+        $where_e['status']=0;
+        $where_e['id']=$eid;
+        $exam=$this->exam_model->get_one('exam_name',$where_e);
+
+        if(!empty($exam)) {
+            $data = $this->member_exam_model->get_one('*', $where);
+            $data['use_dec_v'] = unserialize($data['use_dec_v']);
+            $data['exam_name'] = $exam['exam_name'];
+            $data['quest_num']=count($data['use_dec_v']['judge'])+count($data['use_dec_v']['single'])+count($data['use_dec_v']['more']);
+        }
+//        var_dump($data['use_dec_v']['more'][0]);die;
         $this->load->view('/front/daan',$data);	// 导入 主体部分 视图模板
+    }
+
+    /**
+     * 考试列表
+     */
+    public function examList(){
+        $data=array();
+
+        $this->load->view('/front/liebiao',$data);	// 导入 主体部分 视图模板
     }
 
     /**
@@ -61,14 +97,18 @@ class Examination extends MY_Controller{
         $data_arr=array();
 
         if(!$uid){
-            $info['status']=0;
-            $info['msg']='没有登录！';
+            $info = array(
+                'status' => 0,
+                'msg' => '没有登录！',
+            );
             exit(json_encode($info));
         }
 
         if(empty($content)){
-            $info['status']=0;
-            $info['msg']='数据错误！';
+            $info = array(
+                'status' => 0,
+                'msg' => '数据错误！',
+            );
             exit(json_encode($info));
         }
 
@@ -95,14 +135,18 @@ class Examination extends MY_Controller{
 
         $id=$this->member_exam_model->insert($insert,true);
         if($id){
-            $info['status']=1;
-            $info['msg']='交卷成功！';
+            $info = array(
+                'status' => 1,
+                'msg' => '交卷成功！',
+            );
         }else{
-            $info['status']=0;
-            $info['msg']='交卷超时,请稍后再试！';
+            $info = array(
+                'status' => 0,
+                'msg' => '交卷超时,请重试！',
+            );
         }
 
-        exit(json_encode($data_arr));
+        exit(json_encode($info));
     }
     /**
      * 转化数据

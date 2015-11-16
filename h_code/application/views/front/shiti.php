@@ -73,7 +73,7 @@
       <DIV style="WIDTH: 0px; DISPLAY: none" id=Header class=Ksbody></DIV><!--timefixed结束-->
       <DIV class=testing_content>
         <DIV class=title>
-          <H4><SPAN id=lblpapername>2015年证券从业资格考试《证券交易》考前强化模拟试卷及答案解析</SPAN></H4></DIV>
+          <H4><SPAN id=lblpapername><?php echo $exam_name;?></SPAN></H4></DIV>
         <DIV class=h15></DIV>
 
 
@@ -160,10 +160,7 @@
                   </DIV>
                   <DIV class=choice></DIV>
                   <DIV class=h10></DIV>
-                  <DIV class="biaoji fixed"><A class=mark_ans_img_ing title=拿不定答案，暂时标记一下，呆会做答
-                                               onclick="SXBmakemark_mark_0311(this,'<?php echo $v['exam_id'];?>','<?php echo $v['id'];?>','1');return false;"
-                                               href="javascript:;"
-                                               target=_blank></A>&nbsp;</DIV>
+
                   <DIV class=selectanswer><SPAN class=xuanze_txt>[选择答案]</SPAN>
                     <UL class=zimu2>
                       <LI id=li_1_<?php echo $v['id'];?>_1 onClick="doTotalItemsSelect1(this);return false;"
@@ -190,7 +187,7 @@
           <DIV id=dt_xt_title_2 class=part2 onClick="dtControl('2',0);">判断题</DIV>
           <DIV style="DISPLAY: none" id=dt_xt_content_2>
             <DIV
-                class=style_dt_desc>三、判断题（本大题40小题．每题0.5分，共20.0分。请对下列各题做出判断，“√”表示正确，“X”表示不正确。在答题卡上将该题答案对应的选项框涂黑。）</DIV><!--part1结束-->
+                class=style_dt_desc>三、判断题</DIV><!--part1结束-->
             <DIV class=container>
               <DIV id=<?php echo $e_id;?>_itemPageIndex_1>
                 <?php
@@ -207,10 +204,7 @@
                   </DIV>
                   <DIV class=choice></DIV>
                   <DIV class=h10></DIV>
-                  <DIV class="biaoji fixed"><A class=mark_ans_img_ing title=拿不定答案，暂时标记一下，呆会做答
-                                               onclick="SXBmakemark_mark_0311(this,'<?php echo $v['exam_id'];?>','<?php echo $v['id'];?>','2');return false;"
-                                               href="javascript:;"
-                                               target=_blank></A>&nbsp;</DIV>
+
                   <DIV class=selectanswer><SPAN class=xuanze_txt>[选择答案]</SPAN>
                     <UL class=zimu>
                       <LI onClick="doTotalItemsSelect0(this);return false;" input_value="A"
@@ -625,10 +619,10 @@
 
         $.post(_url, {data: all_data, uid: _uid, eid: _exam_id}, function (d) {
           alert(d.msg);
-          if (d.msg == 1) {
+          if (d.status == 1) {
               window.location.href=_to_url;
           }
-        })
+        },'json')
       }
       return false;
     }
