@@ -7,6 +7,9 @@
  */
 
 class Examination extends MY_Controller{
+    private $perpage=10; //每页条数
+    private $page;
+    private $user_id;   //登录用户id，暂时没有，用get传参，之后可从session或cookie中获取
 
     public function __construct(){
         parent::__construct('frontend');
@@ -15,6 +18,8 @@ class Examination extends MY_Controller{
         $this->load->model('exam_stem_model');
         $this->load->model('member_exam_model');
 
+        $this->page=$this->input->get('page')>=1?$this->input->get('page'):0;
+        $this->user_id=$this->input->get_post('uid');
     }
 
     /**
@@ -22,7 +27,7 @@ class Examination extends MY_Controller{
      */
     public function index(){
         $data=array();
-        $id=$this->input->get_post('id')?$this->input->get_post('id'):1;
+        $id=$this->input->get_post('id')?$this->input->get_post('id'):0;
         $where['dele_status']=NO_DELETE_STATUS;
         $where['exam_id']=$id;
 
@@ -57,9 +62,8 @@ class Examination extends MY_Controller{
      */
     public function result(){
         $data=array();
-        $uid =$this->input->get_post('uid')?$this->input->get_post('uid'):1;
-        $eid =$this->input->get_post('eid')?$this->input->get_post('eid'):1;
-        $where['user_id']=$uid;
+        $eid =$this->input->get_post('eid')?$this->input->get_post('eid'):0;
+        $where['user_id']=$this->user_id;
         $where['exam_id']=$eid;
         $where['dele_status']=NO_DELETE_STATUS;
 
@@ -83,7 +87,24 @@ class Examination extends MY_Controller{
      */
     public function examList(){
         $data=array();
+        $where['dele_status']=NO_DELETE_STATUS;
+        $tags=$this->exam_tag_model->select('*',$where,500,'view_order asc');
 
+        $tid=$this->input->get_post('t_id')?$this->input->get_post('t_id'):$tags[0]['id'];
+        $s_word=$this->input->get_post('s_word')?$this->input->get_post('s_word'):'';
+
+        $page_where="cate_id ={$tid} and dele_status=".NO_DELETE_STATUS;
+        if(strlen(trim($s_word))>0){
+            $page_where.=" and exam_name like'%{$s_word}%'";
+        }
+
+        $res=$this->exam_model->list_info('*',$page_where,$this->page,$this->perpage);
+
+        $data['pages']=pages($this->exam_model->getCount($page_where),$this->page,$this->perpage);
+        $data['res']=$res;
+        $data['tags']=$tags;
+        $data['curr_id']=$tid;
+        $data['s_word']=$s_word;
         $this->load->view('/front/liebiao',$data);	// 导入 主体部分 视图模板
     }
 
@@ -92,7 +113,7 @@ class Examination extends MY_Controller{
      */
     public function anwserOver(){
         $content=$this->input->get_post('data')?$this->input->get_post('data'):array();
-        $uid =$this->input->get_post('uid')?$this->input->get_post('uid'):0;
+        $uid =$this->user_id;
         $eid =$this->input->get_post('eid')?$this->input->get_post('eid'):0;
         $data_arr=array();
 

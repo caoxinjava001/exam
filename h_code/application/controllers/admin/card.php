@@ -9,6 +9,7 @@
 class Card extends MY_Controller{
     private $where; //where条件
     private $perpage=10; //每页条数
+    private $page; //每页条数
     private $login_role;
     private $member_id;
 

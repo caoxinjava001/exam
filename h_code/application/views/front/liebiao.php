@@ -26,17 +26,16 @@
             <td width="540">
 
 
-
+                <form action="<?php echo MAIN_PATH;?>/examination/examList" method="get">
                 <table width="364" border="0" align="right" cellpadding="0" cellspacing="0">
                     <tr>
                         <td width="300" background="<?php echo STATICS_PATH;?>/liebiao_files/s5.jpg" style="padding-left:10px;">
-
-                            <input name="textfield" type="text" style="width:280px; border:1px solid #FFFFFF; color:#7f7f7f" value="请输入关键词" size="45" />
+                            <input name="s_word" type="text" style="width:280px; border:1px solid #FFFFFF; color:#7f7f7f" value="<?php echo $s_word?>" size="45"  placeholder="请输入关键词"/>
                         </td>
-                        <td width="81" align="center"><img src="<?php echo STATICS_PATH;?>/liebiao_files/s4.jpg" width="52" height="30" /></td>
+                        <td width="81" align="center"><input type="image" src="<?php echo STATICS_PATH;?>/liebiao_files/s4.jpg" width="52" height="30" /></td>
                     </tr>
                 </table>
-
+                </form>
 
 
             </td>
@@ -55,50 +54,35 @@
 <DIV class=bread><SPAN>您的位置：</SPAN><A href="#">清大网校在线考试中心</A>&nbsp;&gt; <A #href="#">职业资格</A>&nbsp;&gt; 证券从业资格 </DIV>
 <DIV class="mainContent m2"><!--主体内容-->
     <DIV class=mainList>
-        <DIV class=nav><A class=on href="#"><STRONG>全部试题</STRONG></A><A href="#"><STRONG>模拟试题</STRONG></A><A href="#"><STRONG>历年真题</STRONG></A><A href="#"><STRONG>预测题</STRONG></A> </DIV>
+<!--        <DIV class=nav><A class=on href="#"><STRONG>全部试题</STRONG></A><A href="#"><STRONG>模拟试题</STRONG></A><A href="#"><STRONG>历年真题</STRONG></A><A href="#"><STRONG>预测题</STRONG></A> </DIV>-->
         <DIV class=area>
-            <DIV class=hy><A href="#">证券投资基金</A><A href="#">证券市场基础知识</A><A href="#">证券发行与承销</A><A href="#">证券交易</A><A href="#">证券投资分析</A> </DIV></DIV>
+            <DIV class=hy>
+                <?php foreach($tags as $v){?>
+                <A href="<?php echo MAIN_PATH;?>/examination/examList?t_id=<?php echo $v['id'];?>" class="<?php echo $curr_id==$v['id']?'currt_tag':''?>"><?php echo $v['cate_name'];?></A>
+                <?php }?>
+            </DIV>
+        </DIV>
         <DIV class=sjTitle>
-            <DIV class=cs><SPAN>是否免费</SPAN> <SPAN>进入考试</SPAN> </DIV>
+            <DIV class=cs><SPAN>进入考试</SPAN> </DIV>
             <DIV class=bt><SPAN>试卷标题</SPAN> </DIV></DIV>
         <DIV class=sjList>
             <UL>
-
+                <?php foreach($res as $v){?>
                 <LI>
                     <DIV>
-                        <DIV class=newtitle><SPAN class=mKemu><A  href="#" target=_blank>[证券投资分析]</A></SPAN><A class=mTitle  href="#" target=_blank>2015年证劵投资分析考试考前强化模拟试题及答案解析(一)</A></DIV>
-                        <SPAN class=time><SPAN  style="COLOR: #c00">免费</SPAN></SPAN><DIV class=paper_btn><A class=exam_btn  href="#" target=_blank>进入考试</A></DIV></DIV></LI>
-
-                <LI>
-                    <DIV>
-                        <DIV class=newtitle><SPAN class=mKemu><A href="#"  target=_blank>[证券交易]</A></SPAN><A class=mTitle href="#"  target=_blank>2015年证券从业资格考试《证券交易》考前强化模拟试卷及答案解析</A></DIV>
-                        <SPAN class=time><SPAN style="COLOR: #c00">免费</SPAN></SPAN>
-                        <DIV class=paper_btn><A class=exam_btn  href="#"  target=_blank>进入考试</A></DIV></DIV></LI>
-
-
-
-                <LI>
-                    <DIV>
-                        <DIV class=newtitle><SPAN class=mKemu><A  href="#" target=_blank>[证券发行与承销]</A></SPAN><A class=mTitle  href="#" target=_blank>2015年证券从业资格考试《证券发行与承销》考前强化模拟试题及答案解析(十一)</A></DIV>
-                        <SPAN  class=time>VIP独享</SPAN> <DIV class=paper_btn><A class=exam_btn  href="#" target=_blank>进入考试</A></DIV></DIV></LI>
+                        <DIV class=newtitle><A class=mTitle  href="<?php echo MAIN_PATH;?>/examination/index?id=<?php echo $v['id'];?>" target=_blank><?php echo $v['exam_name'];?></A></DIV>
+                        <DIV class=paper_btn><A class=exam_btn  href="<?php echo MAIN_PATH;?>/examination/index?id=<?php echo $v['id'];?>" target=_blank>进入考试</A></DIV>
+                    </DIV>
+                </LI>
+                <?php }?>
 
             </UL>
             <DIV class=page>
-                <DIV id=AspNetPager1 class=Pager><A style="MARGIN-RIGHT: 5px" disabled>首页</A><A
-                        style="MARGIN-RIGHT: 5px" disabled>前一页</A>
-                    <SPAN style="COLOR: red; FONT-WEIGHT: bold; MARGIN-RIGHT: 5px">[1]</SPAN>
-                    <A style="MARGIN-RIGHT: 5px" href="#">[2]</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">[3]</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">[4]</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">[5]</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">[6]</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">[7]</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">[8]</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">[9]</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">[10]</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">...</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">下一页</A>
-                    <A style="MARGIN-RIGHT: 5px" href="#">末页</A> </DIV></DIV></DIV></DIV></DIV>
+                <?php echo $pages;?>
+            </DIV>
+        </DIV>
+    </DIV>
+</DIV>
 <DIV class=footer>
     <a href="#">如何成为VIP会员</a>&nbsp;&nbsp;<a href="#" >联系我们</a>&nbsp;&nbsp;<a href="#" >版权说明</a>&nbsp;&nbsp;<a href="#" >帮助中心</a></p><p>湘ICP备11011645号</p>
 

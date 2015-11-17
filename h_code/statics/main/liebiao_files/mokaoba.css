@@ -374,7 +374,7 @@ P {
 	BACKGROUND: url(nav_bg.png) repeat-x; COLOR: #fff
 }
 .area {
-	BORDER-BOTTOM: #6ba700 1px solid; BORDER-LEFT: #6ba700 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; OVERFLOW: hidden; BORDER-TOP: medium none; BORDER-RIGHT: #6ba700 1px solid; PADDING-TOP: 0px
+	BORDER-BOTTOM: #6ba700 1px solid; BORDER-LEFT: #6ba700 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; OVERFLOW: hidden; BORDER-TOP: medium none; BORDER-RIGHT: #6ba700 1px solid; PADDING-TOP: 0px;BORDER: #6ba700 1px solid;
 }
 .area A {
 	PADDING-BOTTOM: 0px; MARGIN: 3px 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; DISPLAY: inline-block; WHITE-SPACE: nowrap; COLOR: #444; PADDING-TOP: 0px
@@ -404,7 +404,7 @@ P {
 	BORDER-BOTTOM: #b2d982 1px solid; BORDER-LEFT: #b2d982 1px solid; LINE-HEIGHT: 36px; PADDING-LEFT: 20px; BACKGROUND: url(/images/mokaoba/nav2.png) repeat-x; HEIGHT: 36px; OVERFLOW: hidden; BORDER-TOP: medium none; BORDER-RIGHT: #b2d982 1px solid
 }
 .sjTitle .cs {
-	PADDING-RIGHT: 5px; FLOAT: right
+	PADDING-RIGHT: 20px; FLOAT: right
 }
 .sjTitle SPAN {
 	PADDING-RIGHT: 15px; BACKGROUND-POSITION: 58px -23px; MARGIN-LEFT: 15px
@@ -416,7 +416,7 @@ P {
 	BORDER-BOTTOM: #e6e6e6 1px dashed; LINE-HEIGHT: 35px; MARGIN-TOP: 8px; COLOR: #999; FONT-SIZE: 14px; OVERFLOW: hidden
 }
 .sjList LI DIV.newtitle {
-	LINE-HEIGHT: 35px; WIDTH: 760px; HEIGHT: 35px; OVERFLOW: hidden
+	LINE-HEIGHT: 35px; WIDTH: 840px; HEIGHT: 35px; OVERFLOW: hidden;float:left;
 }
 .sjList LI A {
 	FLOAT: left; COLOR: #999
@@ -431,7 +431,7 @@ P {
 	DISPLAY: inline; FLOAT: right; MARGIN-RIGHT: 5px
 }
 .sjList LI DIV {
-	FLOAT: left; OVERFLOW: hidden
+	FLOAT: right; OVERFLOW: hidden
 }
 .sjList LI DIV.info {
 	LINE-HEIGHT: 16px; FONT-SIZE: 12px
@@ -672,4 +672,11 @@ P {
 }
 .paper_btn .exam_btn:hover {
 	BACKGROUND: url(btn92x27_a.png) no-repeat 0px 0px; TEXT-DECORATION: none
+}
+
+.currt_tag{
+	BACKGROUND: #5daa00; COLOR: #fff !important; TEXT-DECORATION: none
+}
+.currend{
+	color:red !important;
 }
