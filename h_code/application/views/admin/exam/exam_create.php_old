@@ -1,0 +1,176 @@
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font"></i><a href="/admin">首页</a><span class="crumb-step">&gt;</span><a href="/manage/index"><span class="crumb-name">试卷信息</span></a></div>
+</div>
+<link href="<?php echo STATICS_PATH;?>/css/ui/jquery-ui-custom.min.css" type="text/css" rel="stylesheet"/>
+<link href="<?php echo STATICS_PATH;?>/css/b_reg.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="<?php echo STATICS_PATH;?>/js/ui/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH ?>/js/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS;?>/jq_min.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS;?>/ht-hd.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS;?>/ht-effect.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS;?>/jhh_tag_tree.js"></script>
+<script type="text/javascript" src="<?php echo STATICS_PATH_JS;?>/jhh-common.js"></script>
+<script type="text/javascript" src="http://statics.yduedu.com/orgmange/js/ui/jquery-ui.custom.min.js"></script>
+<link href="http://statics.yduedu.com/orgmange/css/ui/jquery-ui-custom.min.css" type="text/css" rel="stylesheet" />
+
+
+<div class="xu" id="xu">
+    <div class="cont_left">
+        <div class="cont_demand">
+            <p class="demand_p1"><?php echo '增加试卷';?></p>
+        </div>
+
+			<iframe name="myupfile" border=0 hidden='yes' width=0 height=0></iframe>
+			<form method="post" id="add_student_form"  action="<?php echo $url_action; ?>" target="myupfile">
+            <input type="hidden" name="check_id" value="<?php echo $data_info['id'];?>"/>
+            <div class="demand_text">
+                <div class="text">
+                    <span class="floatL span1"><i>*</i>试卷名称:</span>
+                    <input type="text" class="sect_1 floatL" name="name" placeholder="请填写代理商名称" value="<?php echo !empty($data_info['user_name'])?$data_info['user_name']:'';?>">
+                    <span class="span2 floatL">请填写试卷名称</span>
+                </div>
+				<div class="text">
+                    <span class="floatL span1"><i>*</i>试卷分类:</span>
+                    <select  class="sect_1 floatL" name="province_id">
+                        <?php foreach($exam_tag_list as $v){?>
+                            <option <?php if($v['id']== $data_info['province']) echo 'selected="selected"';?> value="<?php echo $v['id'];?>"><?php echo $v['cate_name'];?></option>
+                        <?php }?>
+                    </select>
+                    <span class="span2 floatL">请选择用户角色</span>
+                </div>
+                <div class="text" style='text-decoration: none;border-bottom: 1px solid black;'>
+                    <span class="floatL span1"><i></i>试卷列表:</span> <input type="button" value='增加试卷'  name="addr" class="btn btn-blue" onclick='add_update_show()'>
+					 <br>
+                </div>
+
+
+                <div>
+					<ul>
+						<li><span>111</span>&nbsp;&nbsp;<span><input type="button" value="修改">&nbsp;<input type="button" value="删除"></span></li>
+						<li><span>111</span>&nbsp;&nbsp;<span><input type="button" value="修改">&nbsp;<input type="button" value="删除"></span></li>
+						<li><span>111</span>&nbsp;&nbsp;<span><input type="button" value="修改">&nbsp;<input type="button" value="删除"></span></li>
+					</ul>
+				</div>
+                <div class="text">
+                    <span class="floatL span1"></span>
+                    <input type="button" class="btn btn-blue" id="createManager" value="确 定">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<form id="form_sub">
+    <input type="hidden" name="id" id="id"/>
+    <div class="pic_box close_box" style="display:none;left: 50%;margin-left: -325px;margin-top: -100px;position:fixed;top: 15%;z-index: 100;width:650px;height:750px; background-color:#fff;border:1px solid #000;">
+        <div class="close_pic_box" style="float: right;margin:5px 10px 0 0;color:red;font-size:20px;cursor: pointer;">X</div>
+        <div style="margin:20px 0 0 20px;">
+
+            <div style="margin:20px 0 0 0;">题型:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<select name="q_type" id="q_type_id" onchange="getQuestion(this.value);return false;">
+					<option value="0">请选择</option>
+					<option value="<?php  echo EXAM_SINGLE;?>">单选题</option>
+					<option value="<?php  echo EXAM_JUDGE;?>">判断题</option>
+					<option value="<?php  echo EXAM_MORE;?>">多选题</option>
+				</select>
+			</div>
+        </div>
+        <div style="margin:10px 0 0 20px;" id="show_question_id" class='new_st'>
+		</div>
+    </div>
+</form>
+<script>
+
+function getQuestion(q_type_id) {
+	var q_type_id = q_type_id;
+	if (q_type_id == 0 || q_type_id == '') {
+		_msg='请选择题型';
+		_show_msg(_msg, 2000);
+		return false;
+	}
+	var url = '/exam/getQuestioninfoTpl';
+	 $.post(
+			 url,
+			 {
+			 q_type_id:q_type_id
+			 },
+			 function(data) {
+				 if (data["status"] == 1) {
+					$("#show_question_id").html(data["data"]);
+					//window.location.href='/manage/index';//登录成功后的默认页面.
+				 } else {
+					//_show_msg(message_info,2500);
+					_show_msg(data['data'],2500); //_show_msg(data['data']['id'],2500);
+				 }
+				 return false;
+			 },
+			 "json"
+		  );
+	 return false;
+}
+function add_update_show() {
+	
+	$('.pic_box').show();
+}
+
+
+ $(function(){
+        $('.close_pic_box').bind('click',function(){
+            $('.close_box').hide();
+        })
+/*
+        var _host=config.domain.wf;
+        var _url=_host+'/enterprise/ajaxAudit';
+        var _id,_pro,_fin,pro_type;
+        var _data={},obj={},_msg={};
+        //第一步
+        $('.show_pic').bind('click',function(){
+            _id=$(this).attr('rel');
+            _pro=$(this).attr('pro');
+            _fin=$(this).attr('fin');
+            $('#id').attr('value',_id);
+            if(_pro){$('#pro_file').attr('href',_host+_pro);}
+            if(_fin){ $('#fin_file').attr('href',_host+_fin);}
+
+            $('.pic_box').show();
+        })
+        $('.close_pic_box').bind('click',function(){
+            $('.close_box').hide();
+        })
+        //完成
+        $('.end').bind('click',function(){
+            pro_type=$("input:radio[name='pro_type']:checked").attr('rel');
+
+            _data=$('#form_sub').serialize();
+            obj.data=_data;
+            obj.type="post";
+            obj.url=_url;
+            if(confirm('确定提交吗？')) {
+                _util.ajax(obj, function (d) {
+                    _msg.msg = d.msg;
+                    _msg.callback = function () {
+                        window.location.reload();
+                        $('#fin_tip,#pro_tip').val('');
+
+                    }
+                    _show_msg(_msg, 2000);
+                });
+            }
+        })
+*/
+    })
+var sigle_list_arr=[];
+//var sigle_list={};
+document.domain="<?php echo MAIN_DOMAIN_INFO;?>";
+function getShow(statu,msg) {
+	if (statu == 0) {
+		location.href="/exam/index";
+	} else {
+		$.jhh.cm.show_dialog({msg:msg,width:300,height:100});
+	}
+	return false;
+}
+
+</script>
