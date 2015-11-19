@@ -32,7 +32,7 @@ class Examination extends MY_Controller{
         $where['exam_id']=$id;
 
         $where_e['dele_status']=NO_DELETE_STATUS;
-        $where_e['status']=0;
+        $where_e['status']=1;
         $where_e['id']=$id;
         $exam=$this->exam_model->get_one('exam_name',$where_e);
 
