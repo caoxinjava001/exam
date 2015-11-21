@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0050)http://www.mokaoba.com/exam/paperks.aspx -->
-<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>2015年证券从业资格考试《证券交易》考前强化模拟试卷及答案解析</TITLE>
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE><?php echo $exam_name;?></TITLE>
   <META content="text/html; charset=UTF-8" http-equiv=Content-Type>
   <META content=zh-CN http-equiv=Content-Language>
   <META content=no-cache http-equiv=pragma>
@@ -604,8 +604,9 @@
      */
     function doSumbit(){
       var _uid='<?php echo $this->input->get_post('user_id')?$this->input->get_post('user_id'):0;?>';
+      var _uname='<?php echo $this->input->get_post('user_name')?$this->input->get_post('user_name'):'';?>';
       var _exam_id='<?php echo $e_id?$e_id:0;?>';
-      var _to_url='<?php echo MAIN_PATH;?>'+'/examination/result';
+      var _to_url='<?php echo MAIN_PATH;?>'+'/examination/result?eid='+_exam_id+'&user_id='+_uid+'&user_name='+_uname;
       var all_data=checkDone();
       var _url="<?php echo MAIN_PATH;?>"+'/examination/anwserOver';
       var obj=$("[class='select']");
@@ -617,7 +618,7 @@
           all_data[_eid].answer.push(p.attr('input_value'));
         });
 
-        $.post(_url, {data: all_data, uid: _uid, eid: _exam_id}, function (d) {
+        $.post(_url, {data: all_data, user_id: _uid, eid: _exam_id}, function (d) {
           alert(d.msg);
           if (d.status == 1) {
               window.location.href=_to_url;

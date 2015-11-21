@@ -19,13 +19,36 @@ class Examination extends MY_Controller{
         $this->load->model('member_exam_model');
 
         $this->page=$this->input->get('page')>=1?$this->input->get('page'):0;
-        $this->user_id=$this->input->get_post('uid');
+        $this->user_id=$this->input->get_post('user_id');
+        $this->user_name=$this->input->get_post('user_name');
+    }
+
+    /**
+     *  检测用户名和用户id是否存在否则
+     */
+    public function checkError(){
+        $data=array();
+        if(strlen($this->user_name)<1||!$this->user_id){
+            redirect(MAIN_PATH.'/examination/errorPage');
+        }
+    }
+
+    /**
+     * 错误页面
+     */
+    public function errorPage(){
+        $data=array();
+        $data['user_name'] = $this->user_name;
+        $data['user_id'] = $this->user_id;
+        $this->load->view('/front/error',$data);
     }
 
     /**
      * 考试页面
      */
     public function index(){
+        $this->checkError();
+
         $data=array();
         $id=$this->input->get_post('id')?$this->input->get_post('id'):0;
         $where['dele_status']=NO_DELETE_STATUS;
@@ -52,6 +75,8 @@ class Examination extends MY_Controller{
 
             $data['e_id'] = $id;
             $data['exam_name'] = $exam['exam_name'];
+            $data['user_name'] = $this->user_name;
+            $data['user_id'] = $this->user_id;
         }
 
         $this->load->view('/front/shiti',$data);	// 导入 主体部分 视图模板
@@ -61,6 +86,8 @@ class Examination extends MY_Controller{
      * 考试结果
      */
     public function result(){
+        $this->checkError();
+
         $data=array();
         $eid =$this->input->get_post('eid')?$this->input->get_post('eid'):0;
         $where['user_id']=$this->user_id;
@@ -68,7 +95,7 @@ class Examination extends MY_Controller{
         $where['dele_status']=NO_DELETE_STATUS;
 
         $where_e['dele_status']=NO_DELETE_STATUS;
-        $where_e['status']=0;
+        $where_e['status']=1;
         $where_e['id']=$eid;
         $exam=$this->exam_model->get_one('exam_name',$where_e);
 
@@ -77,6 +104,8 @@ class Examination extends MY_Controller{
             $data['use_dec_v'] = unserialize($data['use_dec_v']);
             $data['exam_name'] = $exam['exam_name'];
             $data['quest_num']=count($data['use_dec_v']['judge'])+count($data['use_dec_v']['single'])+count($data['use_dec_v']['more']);
+            $data['user_id']=$this->user_id;
+            $data['user_name']=$this->user_name;
         }
 //        var_dump($data['use_dec_v']['more'][0]);die;
         $this->load->view('/front/daan',$data);	// 导入 主体部分 视图模板
@@ -105,6 +134,9 @@ class Examination extends MY_Controller{
         $data['tags']=$tags;
         $data['curr_id']=$tid;
         $data['s_word']=$s_word;
+        $data['user_id']=$this->user_id;
+        $data['user_name']=$this->user_name;
+
         $this->load->view('/front/liebiao',$data);	// 导入 主体部分 视图模板
     }
 

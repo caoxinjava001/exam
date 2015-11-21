@@ -1,10 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0033)http://www.mokaoba.com/zhengquan/ -->
-<HTML><HEAD><TITLE>2015年证券从业资格考试题库:考试试题、考试真题及答案解析-模考吧</TITLE>
+<HTML><HEAD><TITLE>试题列表</TITLE>
     <META content="text/html; charset=UTF-8" http-equiv=Content-Type>
     <META name=Description
-          content=模考吧为广大考生提供:证券从业资格考试真题,证券从业资格考试模拟试题,证券从业资格考试预测试题,证券从业资格考试冲刺试题及答案解析>
-    <META name=keywords content=证券从业资格考试题库><LINK rel=stylesheet type=text/css
+          content='试题列表'>
+    <META name=keywords content='试题列表'><LINK rel=stylesheet type=text/css
                                                  href="<?php echo STATICS_PATH;?>/liebiao_files/mokaoba.css">
 
 
@@ -58,7 +58,7 @@
         <DIV class=area>
             <DIV class=hy>
                 <?php foreach($tags as $v){?>
-                <A href="<?php echo MAIN_PATH;?>/examination/examList?t_id=<?php echo $v['id'];?>" class="<?php echo $curr_id==$v['id']?'currt_tag':''?>"><?php echo $v['cate_name'];?></A>
+                <A href="<?php echo MAIN_PATH;?>/examination/examList?t_id=<?php echo $v['id'];?>&user_name=<?php echo $user_name;?>&user_id=<?php echo $user_id;?>" class="<?php echo $curr_id==$v['id']?'currt_tag':''?>"><?php echo $v['cate_name'];?></A>
                 <?php }?>
             </DIV>
         </DIV>
@@ -70,8 +70,8 @@
                 <?php foreach($res as $v){?>
                 <LI>
                     <DIV>
-                        <DIV class=newtitle><A class=mTitle  href="<?php echo MAIN_PATH;?>/examination/index?id=<?php echo $v['id'];?>" target=_blank><?php echo $v['exam_name'];?></A></DIV>
-                        <DIV class=paper_btn><A class=exam_btn  href="<?php echo MAIN_PATH;?>/examination/index?id=<?php echo $v['id'];?>" target=_blank>进入考试</A></DIV>
+                        <DIV class=newtitle><A class=mTitle  href="<?php echo MAIN_PATH;?>/examination/index?id=<?php echo $v['id'];?>&user_name=<?php echo $user_name;?>&user_id=<?php echo $user_id;?>" target=_blank><?php echo $v['exam_name'];?></A></DIV>
+                        <DIV class=paper_btn><A class=exam_btn  href="<?php echo MAIN_PATH;?>/examination/index?id=<?php echo $v['id'];?>&user_name=<?php echo $user_name;?>&user_id=<?php echo $user_id;?>" target=_blank>进入考试</A></DIV>
                     </DIV>
                 </LI>
                 <?php }?>

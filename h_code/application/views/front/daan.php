@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0051)http://www.mokaoba.com/exam/Paperda.aspx -->
-<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>2015年证劵投资分析考试考前强化模拟试题及答案解析(一)</TITLE>
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE><?php echo $exam_name;?></TITLE>
     <META content="text/html; charset=UTF-8" http-equiv=Content-Type>
     <META content=zh-CN http-equiv=Content-Language>
     <META content=no-cache http-equiv=pragma>
