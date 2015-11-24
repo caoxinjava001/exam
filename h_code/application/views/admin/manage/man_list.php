@@ -59,7 +59,7 @@
                             <?php */?>
 
                             <td><?php echo $v['id']?></td>
-                            <td><?php echo $v['user_name']?></td>
+                            <td><?php echo $v['user_name'];echo $v['login_role_id']==MANGER_ROLE_INFO?'(<span style="color:red;">管理员</span>)':'';?></td>
                             <td><?php echo $v['zone']?></td>
                             <td><?php echo $v['addr']?></td>
                             <td><?php echo $v['up_date']?></td>

@@ -17,7 +17,16 @@
                     <span class="floatL span1"><i>*</i>代理商名称:</span>
                     <input type="text" class="sect_1 floatL" name="name" placeholder="请填写代理商名称" value="<?php echo !empty($data_info['user_name'])?$data_info['user_name']:'';?>">
                     <span class="span2 floatL">请填写代理商名称</span>
-                </div><div class="text">
+                </div>
+                <div class="text">
+                    <span class="floatL span1"><i>*</i>省份:</span>
+                    <select  class="sect_1 floatL" name="login_role_id">
+                        <option value="2" <?php echo $data_info['login_role_id']==THIRD_ROLE_INFO?'selected':'' ;?>>代理商</option>
+                        <option value="1" <?php echo $data_info['login_role_id']==MANGER_ROLE_INFO?'selected':'' ;?>>管理员</option>
+                    </select>
+                    <span class="span2 floatL">请选择省份</span>
+                </div>
+                <div class="text">
                     <span class="floatL span1"><i>*</i>省份:</span>
                     <select  class="sect_1 floatL" name="province_id">
                         <option value="0">请选择省份</option>
@@ -25,7 +34,7 @@
                             <option <?php if($v['id']== $data_info['province']) echo 'selected="selected"';?> value="<?php echo $v['id'];?>"><?php echo $v['name'];?></option>
                         <?php }?>
                     </select>
-                    <span class="span2 floatL">请选择用户角色</span>
+                    <span class="span2 floatL">请选择省份</span>
                 </div>
                 <div class="text">
                     <span class="floatL span1"><i>*</i>城市:</span>

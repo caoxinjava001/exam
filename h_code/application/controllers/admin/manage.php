@@ -108,6 +108,7 @@ class Manage extends MY_Controller{
         }
 
         $name= $this->input->get_post('name');
+        $login_role_id = $this->input->get_post('login_role_id')?$this->input->get_post('login_role_id'):2; //角色类型
         $province_id = $this->input->get_post('province_id')?$this->input->get_post('province_id'):0; //省id
         $city_id = $this->input->get_post('city_id')?$this->input->get_post('city_id'):0; //市id
         $addr= $this->input->get_post('addr');
@@ -215,6 +216,7 @@ class Manage extends MY_Controller{
         $post_data['addr']=$addr;
         $post_data['mobile']=$mobile;
         $post_data['email']=$email;
+        $post_data['login_role_id']=$login_role_id;
 
 
         //执行插入
