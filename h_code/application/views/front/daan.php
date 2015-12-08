@@ -187,8 +187,10 @@
   src="<?php echo STATICS_PATH;?>/daan_files/view_btn_test.png" width=85 height=36></A></LI></UL></DIV>-->
                 <DIV class="user fr">
                     <DIV id=sidebar2>
-                        <DIV class=sidelist2><SPAN>
-<H3><A class=drop2>admin</A></H3></SPAN>
+                        <DIV class=sidelist2>
+                           <SPAN>
+                            <H3><A class=drop2><?php echo $this->input->get_post('user_name');?></A></H3>
+                          </SPAN>
                             <DIV class=i-list2>
                                 <DIV class=i-list3>
                                     <UL>

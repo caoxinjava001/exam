@@ -13,9 +13,12 @@
     <META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
 <BODY>
 <DIV class=minNav><!--mini导航-->
-    <DIV class=navInner><SPAN class=homeIco><A href="#" >VIP指南</A> | <A class=myTest href="#" >会员中心</A> | <A class=sina href="#" >官方微博</A> </SPAN><SPAN id=ks110_LoginView
-                                                                                                                                                        class=login>欢迎来到清大网校<A href="#">登录</A><A href="#" >免费注册</A>
-</SPAN>
+    <DIV class=navInner><SPAN class=homeIco><A href="#" >VIP指南</A> | <A class=myTest href="#" >会员中心</A> | <A class=sina href="#" >官方微博</A> </SPAN>
+        <?php if($this->input->get_post('user_name')){?>
+        <SPAN id=ks110_LoginView class=login><?php echo $this->input->get_post('user_name');?>,欢迎来到清大网校</SPAN>
+        <?php }else{?>
+        <SPAN id=ks110_LoginView class=login>欢迎来到清大网校<A href="#">登录</A><A href="#" >免费注册</A></SPAN>
+        <?php }?>
     </DIV></DIV>
 <DIV class="banner ">
 
