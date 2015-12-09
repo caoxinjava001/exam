@@ -86,6 +86,14 @@
         </DIV>
     </DIV>
 </DIV>
+<script>
+    var user_id="<?php echo $this->input->get_post("user_id");?>";
+    var user_name="<?php echo $this->input->get_post("user_name");?>";
+
+    if(!user_id||user_name.length<1){
+        alert('用户未登录！')
+    }
+</script>
 <DIV class=footer>
     <a href="#">如何成为VIP会员</a>&nbsp;&nbsp;<a href="#" >联系我们</a>&nbsp;&nbsp;<a href="#" >版权说明</a>&nbsp;&nbsp;<a href="#" >帮助中心</a></p><p>湘ICP备11011645号</p>
 
