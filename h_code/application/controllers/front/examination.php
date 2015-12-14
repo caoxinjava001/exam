@@ -90,24 +90,29 @@ class Examination extends MY_Controller{
 
         $data=array();
         $eid =$this->input->get_post('eid')?$this->input->get_post('eid'):0;
-        $where['user_id']=$this->user_id;
-        $where['exam_id']=$eid;
-        $where['dele_status']=NO_DELETE_STATUS;
+        $id =$this->input->get_post('id')?$this->input->get_post('id'):0;
 
+        $where['user_id']=$this->user_id;
+        if($eid) {
+            $where['exam_id'] = $eid;
+        }else{
+            $where['id'] = $id;
+        }
+        $where['dele_status']=NO_DELETE_STATUS;
+        $data = $this->member_exam_model->get_one('*', $where);
+
+        $data['use_dec_v'] = unserialize($data['use_dec_v']);
+        $data['quest_num']=count($data['use_dec_v']['judge'])+count($data['use_dec_v']['single'])+count($data['use_dec_v']['more']);
+        $data['user_id']=$this->user_id;
+        $data['user_name']=$this->user_name;
+        
         $where_e['dele_status']=NO_DELETE_STATUS;
         $where_e['status']=1;
-        $where_e['id']=$eid;
+        $where_e['id']=$eid?$eid:$data['exam_id'];
         $exam=$this->exam_model->get_one('exam_name',$where_e);
 
-        if(!empty($exam)) {
-            $data = $this->member_exam_model->get_one('*', $where);
-            $data['use_dec_v'] = unserialize($data['use_dec_v']);
-            $data['exam_name'] = $exam['exam_name'];
-            $data['quest_num']=count($data['use_dec_v']['judge'])+count($data['use_dec_v']['single'])+count($data['use_dec_v']['more']);
-            $data['user_id']=$this->user_id;
-            $data['user_name']=$this->user_name;
-        }
-//        var_dump($data['use_dec_v']['more'][0]);die;
+        $data['exam_name'] = $exam['exam_name'];
+
         $this->load->view('/front/daan',$data);	// 导入 主体部分 视图模板
     }
 

@@ -70,7 +70,7 @@
     <DIV class=h63></DIV>
     <DIV class=width960>
       <DIV class=h15></DIV>
-      <DIV class=testing_position><SPAN>你当前位置：</SPAN><A href="javascript:;">模考吧在线考试中心</A> &gt;&gt; <A href="javascript:;">职业资格</A> &gt;&gt; <A href="javascript:;">证券从业资格</A> &gt;&gt; <A href="javascript:;">证券交易</A> </DIV>
+      <DIV class=testing_position><SPAN>你当前位置：</SPAN><A href="<?php echo MAIN_PATH.'/examination/examList?user_id='.$this->input->get_post('user_id').'&user_name='.$this->input->get_post('user_name')?>">试题列表</A> &gt;&gt;<?php echo $exam_name;?></DIV>
       <DIV class=h15></DIV>
       <DIV style="WIDTH: 0px; DISPLAY: none" id=Header class=Ksbody></DIV><!--timefixed结束-->
       <DIV class=testing_content>

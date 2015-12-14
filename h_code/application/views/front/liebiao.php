@@ -54,7 +54,8 @@
     <DIV><SPAN class=n1>1.选择试题</SPAN><SPAN class=n2>2.注册/登陆</SPAN><SPAN
             class=n3>3.开始答题</SPAN><SPAN class=n4>4.提交试卷</SPAN><SPAN
             class=n5>5.查看成绩</SPAN><SPAN class=n6>6.答案解析</SPAN></DIV></DIV>
-<DIV class=bread><SPAN>您的位置：</SPAN><A href="#">清大网校在线考试中心</A>&nbsp;&gt; <A #href="#">职业资格</A>&nbsp;&gt; 证券从业资格 </DIV>
+
+<DIV class=bread><SPAN>您的位置：</SPAN>试题列表</DIV>
 <DIV class="mainContent m2"><!--主体内容-->
     <DIV class=mainList>
 <!--        <DIV class=nav><A class=on href="#"><STRONG>全部试题</STRONG></A><A href="#"><STRONG>模拟试题</STRONG></A><A href="#"><STRONG>历年真题</STRONG></A><A href="#"><STRONG>预测题</STRONG></A> </DIV>-->

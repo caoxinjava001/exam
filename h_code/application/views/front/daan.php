@@ -201,8 +201,7 @@
     <DIV class=h63></DIV>
     <DIV class=width960>
         <DIV class=h15></DIV>
-        <DIV class=testing_position><SPAN>你当前位置：</SPAN><A href="#">模考吧在线考试中心</A> &gt;&gt; <A href="#">职业资格</A> &gt;&gt; <A href="#">证券从业资格</A> &gt;&gt; <A  href="#">证券投资分析</A>
-        </DIV>
+        <DIV class=testing_position><SPAN>你当前位置：</SPAN><A href="<?php echo MAIN_PATH.'/examination/examList?user_id='.$this->input->get_post('user_id').'&user_name='.$this->input->get_post('user_name')?>">试题列表</A> &gt;&gt;<?php echo $exam_name;?></DIV>
         <DIV class=h15></DIV>
         <DIV style="LINE-HEIGHT: 10px; DISPLAY: none; HEIGHT: 10px" id=Header></DIV><!--timefixed结束-->
         <DIV class=testing_content>
