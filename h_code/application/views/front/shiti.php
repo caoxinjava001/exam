@@ -617,7 +617,7 @@
           var p = $(this).parent('li');
           var arr_name = p.attr('input_name').split('_');
           var _eid = arr_name[2];   //试题id
-          all_data[_eid].answer.push(p.attr('input_value'));
+          all_data['A'+_eid].answer.push(p.attr('input_value'));
         });
 
         $.post(_url, {data: all_data, user_id: _uid, eid: _exam_id}, function (d) {
@@ -633,7 +633,7 @@
      * 答题情况
      */
     function checkDone(){
-      var all_res=[];  //总数据
+      var all_res={};  //总数据
       var do_num=0;
       var _single_do=$('#dt_xt_nav_1_0').find('li');  //单选题
       var _more_do=$('#dt_xt_nav_1_1').find('li');  //多选题
@@ -648,7 +648,7 @@
           _sids.id=_s_id[2];  //题的id
           _sids.do=_s_arr[3];  //做没做
           _sids.answer=[];  //答案容器
-          all_res[_s_id[2]]=_sids;
+          all_res['A'+_s_id[2]]=_sids;
           if(parseInt(_s_arr[3])==1){
             do_num++;
           }
@@ -662,7 +662,7 @@
         _mids.id=_m_id[2];  //题的id
         _mids.do=_m_arr[3];  //做没做
         _mids.answer=[];  //答案容器
-        all_res[_m_id[2]]=_mids;
+        all_res['A'+_m_id[2]]=_mids;
         if(parseInt(_m_arr[3])==1){
           do_num++;
         }
@@ -676,7 +676,7 @@
         _jids.id=_j_id[2];  //题的id
         _jids.do=_j_arr[3];  //做没做
         _jids.answer=[];  //答案容器
-        all_res[_j_id[2]]=_jids;
+        all_res['A'+_j_id[2]]=_jids;
         if(parseInt(_j_arr[3])==1){
           do_num++;
         }
